@@ -4,7 +4,7 @@
 
 在字符串模板中，如 Handlebars，我们得像这样写一个条件块：
 
-``` html
+```html
 <!-- Handlebars 模板 -->
 {{#if ok}}
   <h1>Yes</h1>
@@ -13,13 +13,13 @@
 
 在 Vue.js，我们使用 `v-if` 指令实现同样的功能：
 
-``` html
+```html
 <h1 v-if="ok">Yes</h1>
 ```
 
 也可以用 `v-else` 添加一个 "else" 块：
 
-``` html
+```html
 <h1 v-if="ok">Yes</h1>
 <h1 v-else>No</h1>
 ```
@@ -28,7 +28,7 @@
 
 因为 `v-if` 是一个指令，需要将它添加到一个元素上。但是如果我们想切换多个元素呢？此时我们可以把一个 `<template>` 元素当做包装元素，并在上面使用 `v-if`，最终的渲染结果不会包含它。
 
-``` html
+```html
 <template v-if="ok">
   <h1>Title</h1>
   <p>Paragraph 1</p>
@@ -40,7 +40,7 @@
 
 另一个根据条件展示元素的选项是 `v-show` 指令。用法大体上一样：
 
-``` html
+```html
 <h1 v-show="ok">Hello!</h1>
 ```
 
@@ -52,7 +52,7 @@
 
 可以用 `v-else` 指令给 `v-if` 或 `v-show` 添加一个 "else 块"：
 
-``` html
+```html
 <div v-if="Math.random() > 0.5">
   Sorry
 </div>

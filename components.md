@@ -10,7 +10,7 @@
 
 之前说过，我们可以用 `Vue.extend()` 创建一个组件构造器：
 
-``` js
+```js
 var MyComponent = Vue.extend({
   // 选项...
 })
@@ -18,7 +18,7 @@ var MyComponent = Vue.extend({
 
 要把这个构造器用作组件，需要用 `Vue.component(tag, constructor)` **注册** ：
 
-``` js
+```js
 // 全局注册组件，tag 为 my-component
 Vue.component('my-component', MyComponent)
 ```
@@ -27,13 +27,13 @@ Vue.component('my-component', MyComponent)
 
 组件在注册之后，便可以在父实例的模块中以自定义元素 `<my-component>` 的形式使用。要确保在初始化根实例**之前**注册了组件：
 
-``` html
+```html
 <div id="example">
   <my-component></my-component>
 </div>
 ```
 
-``` js
+```js
 // 定义
 var MyComponent = Vue.extend({
   template: '<div>A custom component!</div>'
@@ -50,7 +50,7 @@ new Vue({
 
 渲染为：
 
-``` html
+```html
 <div id="example">
   <div>A custom component!</div>
 </div>
@@ -74,7 +74,7 @@ new Vue({ el: '#example' })
 
 不需要全局注册每个组件。可以让组件只能用在其它组件内，用实例选项 `components` 注册：
 
-``` js
+```js
 var Child = Vue.extend({ /* ... */ })
 
 var Parent = Vue.extend({
@@ -92,7 +92,7 @@ var Parent = Vue.extend({
 
 为了让事件更简单，可以直接传入选项对象而不是构造器给 `Vue.component()` 和 `component` 选项。Vue.js 在背后自动调用 `Vue.extend()`：
 
-``` js
+```js
 // 在一个步骤中扩展与注册
 Vue.component('my-component', {
   template: '<div>A custom component!</div>'
@@ -112,7 +112,7 @@ var Parent = Vue.extend({
 
 传入 Vue 构造器的多数选项也可以用在 `Vue.extend()` 中，不过有两个特例： `data` 和 `el`。试想如果我们简单地把一个对象作为 `data` 选项传给 `Vue.extend()`：
 
-``` js
+```js
 var data = { a: 1 }
 var MyComponent = Vue.extend({
   data: data
@@ -121,7 +121,7 @@ var MyComponent = Vue.extend({
 
 这么做的问题是 `MyComponent` 所有的实例将共享同一个 `data` 对象！这基本不是我们想要的，因此我们应当使用一个函数作为 `data` 选项，让这个函数返回一个新对象：
 
-``` js
+```js
 var MyComponent = Vue.extend({
   data: function () {
     return { a: 1 }
@@ -148,7 +148,7 @@ Vue 的模板是 DOM 模板，使用浏览器原生的解析器而不是自己�
 
 对于自定义元素，应当使用 `is` 特性：
 
-``` html
+```html
 <table>
   <tr is="my-component"></tr>
 </table>
@@ -156,7 +156,7 @@ Vue 的模板是 DOM 模板，使用浏览器原生的解析器而不是自己�
 
 `<template>` 不能用在 `<table>` 内，这时应使用 `<tbody>`，`<table>` 可以有多个 `<tbody>`：
 
-``` html
+```html
 <table>
   <tbody v-for="item in items">
     <tr>Even row</tr>
@@ -173,7 +173,7 @@ Vue 的模板是 DOM 模板，使用浏览器原生的解析器而不是自己�
 
 "prop" 是组件数据的一个字段，期望从父组件传下来。子组件需要显式地用 [`props` 选项](/api/#props) 声明 props：
 
-``` js
+```js
 Vue.component('child', {
   // 声明 props
   props: ['msg'],
@@ -185,7 +185,7 @@ Vue.component('child', {
 
 然后向它传入一个普通字符串：
 
-``` html
+```html
 <child msg="hello!"></child>
 ```
 
@@ -212,7 +212,7 @@ new Vue({
 
 HTML 特性不区分大小写。名字形式为 camelCase 的 prop 用作特性时，需要转为 kebab-case（短横线隔开）：
 
-``` js
+```js
 Vue.component('child', {
   // camelCase in JavaScript
   props: ['myMessage'],
@@ -220,7 +220,7 @@ Vue.component('child', {
 })
 ```
 
-``` html
+```html
 <!-- kebab-case in HTML -->
 <child my-message="hello!"></child>
 ```
@@ -229,7 +229,7 @@ Vue.component('child', {
 
 类似于用 `v-bind` 绑定 HTML 特性到一个表达式，也可以用 `v-bind` 绑定动态 Props 到父组件的数据。每当父组件的数据变化时，也会传导给子组件：
 
-``` html
+```html
 <div>
   <input v-model="parentMsg">
   <br>
@@ -239,7 +239,7 @@ Vue.component('child', {
 
 使用 `v-bind` 的缩写语法通常更简单：
 
-``` html
+```html
 <child :my-message="parentMsg"></child>
 ```
 
@@ -271,14 +271,14 @@ new Vue({
 
 初学者常犯的一个错误是使用字面量语法传递数值：
 
-``` html
+```html
 <!-- 传递了一个字符串 "1" -->
 <comp some-prop="1"></comp>
 ```
 
 因为它是一个字面 prop，它的值以字符串 `"1"` 而不是以实际的数字传下去。如果想传递一个实际的 JavaScript 数字，需要使用动态语法，从而让它的值被当作 JavaScript 表达式计算：
 
-``` html
+```html
 <!-- 传递实际的数字  -->
 <comp :some-prop="1"></comp>
 ```
@@ -289,7 +289,7 @@ prop 默认是**单向**绑定：当父组件的属性变化时，将传导给�
 
 比较语法：
 
-``` html
+```html
 <!-- 默认为单向绑定 -->
 <child :msg="parentMsg"></child>
 
@@ -308,7 +308,7 @@ prop 默认是**单向**绑定：当父组件的属性变化时，将传导给�
 
 组件可以为 props 指定验证要求。当组件给其他人使用时这很有用，因为这些验证要求构成了组件的 API，确保其他人正确地使用组件。此时 props 的值是一个对象，包含验证要求：
 
-``` js
+```js
 Vue.component('example', {
   props: {
     // 基础类型检测 （`null` 意思是任何类型都可以）
@@ -402,7 +402,7 @@ Vue 实例实现了一个自定义事件接口，用于在组件树中通信。�
 
 简单例子：
 
-``` html
+```html
 <!-- 子组件模板 -->
 <template id="child-template">
   <input v-model="msg">
@@ -416,7 +416,7 @@ Vue 实例实现了一个自定义事件接口，用于在组件树中通信。�
 </div>
 ```
 
-``` js
+```js
 // 注册子组件
 // 将当前消息派发出去
 Vue.component('child', {
@@ -495,7 +495,7 @@ var parent = new Vue({
 
 上例非常好，不过从父组件的代码中不能直观的看到 `"child-msg"` 事件来自哪里。如果我们在模板中子组件用到的地方声明事件处理器会更好。为此子组件可以用 `v-on` 监听自定义事件：
 
-``` html
+```html
 <child v-on:child-msg="handleIt"></child>
 ```
 
@@ -505,13 +505,13 @@ var parent = new Vue({
 
 尽管有 props 和 events，但是有时仍然需要在 JavaScript 中直接访问子组件。为此可以使用 `v-ref` 为子组件指定一个索引 ID。例如：
 
-``` html
+```html
 <div id="parent">
   <user-profile v-ref:profile></user-profile>
 </div>
 ```
 
-``` js
+```js
 var parent = new Vue({ el: '#parent' })
 // 访问子组件
 var child = parent.$refs.profile
@@ -523,7 +523,7 @@ var child = parent.$refs.profile
 
 在使用组件时，常常要像这样组合它们：
 
-``` html
+```html
 <app>
   <app-header></app-header>
   <app-footer></app-footer>
@@ -542,7 +542,7 @@ var child = parent.$refs.profile
 
 在深入内容分发 API 之前，我们先明确内容的编译作用域。假定模板为：
 
-``` html
+```html
 <child-component>
   {{ msg }}
 </child-component>
@@ -554,7 +554,7 @@ var child = parent.$refs.profile
 
 一个常见错误是试图在父组件模板内将一个指令绑定到子组件的属性/方法：
 
-``` html
+```html
 <!-- 无效 -->
 <child-component v-show="someChildProperty"></child-component>
 ```
@@ -563,7 +563,7 @@ var child = parent.$refs.profile
 
 如果要绑定子组件内的指令到一个组件的根节点，应当在它的模板内这么做：
 
-``` js
+```js
 Vue.component('child-component', {
   // 有效，因为是在正确的作用域内
   template: '<div v-show="someChildProperty">Child</div>',
@@ -585,7 +585,7 @@ Vue.component('child-component', {
 
 假定 `my-component` 组件有下面模板：
 
-``` html
+```html
 <div>
   <h1>This is my component!</h1>
   <slot>
@@ -596,7 +596,7 @@ Vue.component('child-component', {
 
 父组件模板：
 
-``` html
+```html
 <my-component>
   <p>This is some original content</p>
   <p>This is some more original content</p>
@@ -605,7 +605,7 @@ Vue.component('child-component', {
 
 渲染结果：
 
-``` html
+```html
 <div>
   <h1>This is my component!</h1>
   <p>This is some original content</p>
@@ -621,7 +621,7 @@ Vue.component('child-component', {
 
 例如，假定我们有一个 `multi-insertion` 组件，它的模板为：
 
-``` html
+```html
 <div>
   <slot name="one"></slot>
   <slot></slot>
@@ -631,7 +631,7 @@ Vue.component('child-component', {
 
 父组件模板：
 
-``` html
+```html
 <multi-insertion>
   <p slot="one">One</p>
   <p slot="two">Two</p>
@@ -641,7 +641,7 @@ Vue.component('child-component', {
 
 渲染结果为：
 
-``` html
+```html
 <div>
   <p slot="one">One</p>
   <p>Default A</p>
@@ -655,7 +655,7 @@ Vue.component('child-component', {
 
 多个组件可以使用同一个挂载点，然后动态地在它们之间切换。使用保留的 `<component>` 元素，动态地绑定到它的 `is` 特性：
 
-``` js
+```js
 new Vue({
   el: 'body',
   data: {
@@ -669,7 +669,7 @@ new Vue({
 })
 ```
 
-``` html
+```html
 <component :is="currentView">
   <!-- 组件在 vm.currentview 变化时改变 -->
 </component>
@@ -678,7 +678,7 @@ new Vue({
 
 如果把切换出去的组件保留在内存中，可以保留它的状态或避免重新渲染。为此可以添加一个 `keep-alive` 指令参数：
 
-``` html
+```html
 <component :is="currentView" keep-alive>
   <!-- 非活动组件将被缓存 -->
 </component>
@@ -688,7 +688,7 @@ new Vue({
 
 在切换组件时，切入组件在切入前可能需要进行一些异步操作。为了控制组件切换时长，给切入组件添加 `activate` 钩子：
 
-``` js
+```js
 Vue.component('activate-example', {
   activate: function (done) {
     var self = this
@@ -714,7 +714,7 @@ Vue.component('activate-example', {
 
 **示例：**
 
-``` html
+```html
 <!-- 先淡出再淡入 -->
 <component
   :is="view"
@@ -723,7 +723,7 @@ Vue.component('activate-example', {
 </component>
 ```
 
-``` css
+```css
 .fade-transition {
   transition: opacity .3s ease;
 }
@@ -773,13 +773,13 @@ new Vue({
 ### 组件和 v-for
 自定义组件可以像普通元素一样直接使用  `v-for`：
 
-``` html
+```html
 <my-component v-for="item in items"></my-component>
 ```
 
 但是，不能传递数据给组件，因为组件的作用域是孤立的。为了传递数据给组件，应当使用 props：
 
-``` html
+```html
 <my-component
   v-for="item in items"
   :item="item"
@@ -803,7 +803,7 @@ Vue.js 组件 API 来自三部分——prop，事件和 slot：
 
 使用 `v-bind` 和 `v-on` 的简写语法，模板的缩进清楚且简洁：
 
-``` html
+```html
 <my-component
   :foo="baz"
   :bar="qux"
@@ -819,7 +819,7 @@ Vue.js 组件 API 来自三部分——prop，事件和 slot：
 
 在大型应用中，我们可能需要将应用拆分为小块，只在需要时才从服务器下载。为了让事情更简单，Vue.js 允许将组件定义为一个工厂函数，动态地解析组件的定义。Vue.js 只在组件需要渲染时触发工厂函数，并且把结果缓存起来，用于后面的再次渲染。例如：
 
-``` js
+```js
 Vue.component('async-example', function (resolve, reject) {
   setTimeout(function () {
     resolve({
@@ -831,7 +831,7 @@ Vue.component('async-example', function (resolve, reject) {
 
 工厂函数接收一个 `resolve` 回调，在收到从服务器下载的组件定义时调用。也可以调用 `reject(reason)` 指示加载失败。这里 `setTimeout` 只是为了演示。怎么获取组件完全由你决定。推荐配合使用 [Webpack 的代码分割功能](http://webpack.github.io/docs/code-splitting.html)：
 
-``` js
+```js
 Vue.component('async-webpack-example', function (resolve) {
   // 这个特殊的 require 语法告诉 webpack
   // 自动将编译后的代码分割成不同的块，
@@ -846,7 +846,7 @@ Vue.component('async-webpack-example', function (resolve) {
 
 Vue.js 支持资源的名字使用 camelCase 或 PascalCase 的形式，并且在模板中自动将它们转为 kebab-case（类似于 prop 的命名约定）：
 
-``` js
+```js
 // 在组件定义中
 components: {
   // 使用 camelCase 形式注册
@@ -854,14 +854,14 @@ components: {
 }
 ```
 
-``` html
+```html
 <!-- 在模板中使用 kebab-case 形式 -->
 <my-component></my-component>
 ```
 
 [ES6 对象字面量缩写](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_6) 也没问题：
 
-``` js
+```js
 // PascalCase
 import TextBox from './components/text-box';
 import DropdownMenu from './components/dropdown-menu';
@@ -879,7 +879,7 @@ export default {
 
 组件在它的模板内可以递归地调用自己，不过，只有当它有 `name` 选项时才可以：
 
-``` js
+```js
 var StackOverflow = Vue.extend({
   name: 'stack-overflow',
   template:
@@ -898,14 +898,14 @@ var StackOverflow = Vue.extend({
 
 不这么写模板：
 
-``` html
+```html
 <div>root node 1</div>
 <div>root node 2</div>
 ```
 
 推荐这么写：
 
-``` html
+```html
 <div>
   I have a single root node!
   <div>node 1</div>
@@ -925,7 +925,7 @@ var StackOverflow = Vue.extend({
 
 但是更重要的是，**组件元素上的非流程控制指令，非 prop 特性和过渡将被忽略**，因为没有根元素供绑定：
 
-``` html
+```html
 <!-- 不可以，因为没有根元素 -->
 <example v-show="ok" transition="fade"></example>
 
@@ -942,7 +942,7 @@ var StackOverflow = Vue.extend({
 
 如果子组件有 `inline-template` 特性，组件将把它的内容当作它的模板，而不是把它当作分发内容。这让模板更灵活。
 
-``` html
+```html
 <my-component inline-template>
   <p>These are compiled as the component's own template</p>
   <p>Not parent's transclusion content.</p>

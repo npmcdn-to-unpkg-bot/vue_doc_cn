@@ -6,12 +6,12 @@
 
 ### Hello World
 
-``` html
+```html
 <div id="app">
   {{ message }}
 </div>
 ```
-``` js
+```js
 new Vue({
   el: '#app',
   data: {
@@ -35,13 +35,13 @@ new Vue({
 
 ### 双向绑定
 
-``` html
+```html
 <div id="app">
   <p>{{ message }}</p>
   <input v-model="message">
 </div>
 ```
-``` js
+```js
 new Vue({
   el: '#app',
   data: {
@@ -66,7 +66,7 @@ new Vue({
 
 ### 渲染列表
 
-``` html
+```html
 <div id="app">
   <ul>
     <li v-for="todo in todos">
@@ -75,7 +75,7 @@ new Vue({
   </ul>
 </div>
 ```
-``` js
+```js
 new Vue({
   el: '#app',
   data: {
@@ -111,13 +111,13 @@ new Vue({
 
 ### 处理用户输入
 
-``` html
+```html
 <div id="app">
   <p>{{ message }}</p>
   <button v-on:click="reverseMessage">Reverse Message</button>
 </div>
 ```
-``` js
+```js
 new Vue({
   el: '#app',
   data: {
@@ -152,7 +152,7 @@ new Vue({
 
 ### 综合
 
-``` html
+```html
 <div id="app">
   <input v-model="newTodo" v-on:keyup.enter="addTodo">
   <ul>
@@ -163,7 +163,7 @@ new Vue({
   </ul>
 </div>
 ```
-``` js
+```js
 new Vue({
   el: '#app',
   data: {

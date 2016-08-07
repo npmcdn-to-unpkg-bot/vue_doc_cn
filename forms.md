@@ -7,7 +7,7 @@
 
 ### Text
 
-``` html
+```html
 <span>Message is: {{ message }}</span>
 <br>
 <input type="text" v-model="message" placeholder="edit me">
@@ -32,7 +32,7 @@ new Vue({
 
 单个勾选框，逻辑值：
 
-``` html
+```html
 <input type="checkbox" id="checkbox" v-model="checked">
 <label for="checkbox">{{ checked }}</label>
 ```
@@ -53,7 +53,7 @@ new Vue({
 
 多个勾选框，绑定到同一个数组：
 
-``` html
+```html
 <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
 <label for="jack">Jack</label>
 <input type="checkbox" id="john" value="John" v-model="checkedNames">
@@ -64,7 +64,7 @@ new Vue({
 <span>Checked names: {{ checkedNames | json }}</span>
 ```
 
-``` js
+```js
 new Vue({
   el: '...',
   data: {
@@ -97,7 +97,7 @@ new Vue({
 ### Radio
 
 
-``` html
+```html
 <input type="radio" id="one" value="One" v-model="picked">
 <label for="one">One</label>
 <br>
@@ -130,7 +130,7 @@ new Vue({
 
 单选：
 
-``` html
+```html
 <select v-model="selected">
   <option selected>A</option>
   <option>B</option>
@@ -159,7 +159,7 @@ new Vue({
 
 多选（绑定到一个数组）：
 
-``` html
+```html
 <select v-model="selected" multiple>
   <option selected>A</option>
   <option>B</option>
@@ -190,7 +190,7 @@ new Vue({
 
 动态选项，用 `v-for` 渲染：
 
-``` html
+```html
 <select v-model="selected">
   <option v-for="option in options" v-bind:value="option.value">
     {{ option.text }}
@@ -198,7 +198,7 @@ new Vue({
 </select>
 <span>Selected: {{ selected }}</span>
 ```
-``` js
+```js
 new Vue({
   el: '...',
   data: {
@@ -239,7 +239,7 @@ new Vue({
 
 对于单选按钮，勾选框及选择框选项，`v-model` 绑定的 value 通常是静态字符串（对于勾选框是逻辑值）：
 
-``` html
+```html
 <!-- 当选中时，`picked` 为字符串 "a" -->
 <input type="radio" v-model="picked" value="a">
 
@@ -256,7 +256,7 @@ new Vue({
 
 ### Checkbox
 
-``` html
+```html
 <input
   type="checkbox"
   v-model="toggle"
@@ -264,7 +264,7 @@ new Vue({
   v-bind:false-value="b">
 ```
 
-``` js
+```js
 // 当选中时
 vm.toggle === vm.a
 // 当没有选中时
@@ -273,25 +273,25 @@ vm.toggle === vm.b
 
 ### Radio
 
-``` html
+```html
 <input type="radio" v-model="pick" v-bind:value="a">
 ```
 
-``` js
+```js
 // 当选中时
 vm.pick === vm.a
 ```
 
 ### Select Options
 
-``` html
+```html
 <select v-model="selected">
   <!-- 对象字面量 -->
   <option v-bind:value="{ number: 123 }">123</option>
 </select>
 ```
 
-``` js
+```js
 // 当选中时
 typeof vm.selected // -> 'object'
 vm.selected.number // -> 123
@@ -303,7 +303,7 @@ vm.selected.number // -> 123
 
 在默认情况下，`v-model` 在`input` 事件中同步输入框值与数据，可以添加一个特性 `lazy`，从而改到在 `change` 事件中同步：
 
-``` html
+```html
 <!-- 在 "change" 而不是 "input" 事件中更新 -->
 <input v-model="msg" lazy>
 ```
@@ -312,7 +312,7 @@ vm.selected.number // -> 123
 
 如果想自动将用户的输入转为 Number 类型（如果原值的转换结果为 NaN 则返回原值），可以添加一个特性 `number`：
 
-``` html
+```html
 <input v-model="age" number>
 ```
 
@@ -320,7 +320,7 @@ vm.selected.number // -> 123
 
 `debounce` 设置一个最小的延时，在每次敲击之后延时同步输入框的值与数据。如果每次更新都要进行高耗操作（例如在输入提示中 Ajax 请求），它较为有用。
 
-``` html
+```html
 <input v-model="msg" debounce="500">
 ```
  {% raw %}

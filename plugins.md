@@ -14,7 +14,7 @@
 
 Vue.js 的插件应当有一个公开方法 `install`。这个方法的第一个参数是 `Vue` 构造器，第二个参数是一个可选的选项对象：
 
-``` js
+```js
 MyPlugin.install = function (Vue, options) {
   // 1. 添加全局方法或属性
   Vue.myGlobalMethod = ...
@@ -29,20 +29,20 @@ MyPlugin.install = function (Vue, options) {
 
 通过 `Vue.use()` 全局方法使用插件：
 
-``` js
+```js
 // 调用 `MyPlugin.install(Vue)`
 Vue.use(MyPlugin)
 ```
 
 也可以传入一个选项对象：
 
-``` js
+```js
 Vue.use(MyPlugin, { someOption: true })
 ```
 
 一些插件，如 `vue-router`，如果 `Vue` 是全局变量则自动调用 `Vue.use()`。不过在模块环境中应当始终显式调用 `Vue.use()`：
 
-``` js
+```js
 // 通过 Browserify 或 Webpack 使用 CommonJS 兼容模块
 var Vue = require('vue')
 var VueRouter = require('vue-router')

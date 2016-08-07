@@ -41,13 +41,13 @@ Webpack 和 Browserify 不只是模块打包器。两者都提供了源码转换
 
 **示例：**
 
-``` html
+```html
 <div id="app">
   <component :is="currentView"></component>
 </div>
 ```
 
-``` js
+```js
 Vue.component('home', { /* ... */ })
 Vue.component('page1', { /* ... */ })
 var app = new Vue({
@@ -70,7 +70,7 @@ Vue 实例的原始数据 `$data` 能直接用 `JSON.stringify()` 序列化。�
 
 在大型应用中，状态管理常常变得复杂，因为状态分散在许多组件内。常常忽略 Vue.js 应用的来源是原生的数据对象—— Vue 实例代理访问它。因此，如果一个状态要被多个实例共享，应避免复制它：
 
-``` js
+```js
 var sourceOfTruth = {}
 
 var vmA = new Vue({
@@ -84,7 +84,7 @@ var vmB = new Vue({
 
 现在每当 `sourceOfTruth` 被修改后，`vmA` 与 `vmB` 将自动更新它们的视图。扩展这个思路，我们可以实现 **store 模式**：
 
-``` js
+```js
 var store = {
   state: {
     message: 'Hello!'
@@ -128,7 +128,7 @@ Flux 架构常用于 React 应用中，但它的核心理念也可以适用于 V
 
 代码测试的最佳实践是导出组件模块的选项/函数。例如：
 
-``` js
+```js
 // my-component.js
 module.exports = {
   template: '<span>{{msg}}</span>',
@@ -145,7 +145,7 @@ module.exports = {
 
 在入口模块中使用这个模块：
 
-``` js
+```js
 // main.js
 var Vue = require('vue')
 var app = new Vue({
@@ -159,7 +159,7 @@ var app = new Vue({
 
 测试这个模块：
 
-``` js
+```js
 // Jasmine 2.0 测试
 describe('my-component', function () {
   // require source module
@@ -187,7 +187,7 @@ Karma 的示例配置：[Webpack](https://github.com/vuejs/vue-loader-example/bl
 
 使用插件 [DefinePlugin](http://webpack.github.io/docs/list-of-plugins.html#defineplugin) 将当前环境指定为生产环境，警告将在 UglifyJS 压缩代码过程中被删除。配置示例：
 
-``` js
+```js
 var webpack = require('webpack')
 
 module.exports = {
@@ -212,7 +212,7 @@ module.exports = {
 
 将 NODE_ENV 设置为 "production"，然后运行打包命令。Vue 会自动应用 [envify](https://github.com/hughsk/envify) 并让警告块不能运行。例如：
 
-``` bash
+```bash
 NODE_ENV=production browserify -e main.js | uglifyjs -c -m > build.js
 ```
 

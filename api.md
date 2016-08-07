@@ -12,7 +12,7 @@
 
 - **用法：**
 
-  ``` js
+  ```js
   Vue.config.debug = true
   ```
 
@@ -33,7 +33,7 @@
 
 - **用法：**
 
-  ``` js
+  ```js
   // ES6 模板字符串
   Vue.config.delimiters = ['${', '}']
   ```
@@ -48,7 +48,7 @@
 
 - **用法：**
 
-  ``` js
+  ```js
   // make it look more dangerous
   Vue.config.unsafeDelimiters = ['{!!', '!!}']
   ```
@@ -63,7 +63,7 @@
 
 - **用法：**
 
-  ``` js
+  ```js
   Vue.config.silent = true
   ```
 
@@ -77,7 +77,7 @@
 
 - **用法：**
 
-  ``` js
+  ```js
   Vue.config.async = false
   ```
 
@@ -91,7 +91,7 @@
 
 - **用法：**
 
-  ``` js
+  ```js
   // 在加载 Vue 之后立即同步的设置
   Vue.config.devtools = true
   ```
@@ -111,11 +111,11 @@
 
   这里要注意的特例是 `el` 和 `data` 选项—— 在 `Vue.extend()` 中它们必须是函数。
 
-  ``` html
+  ```html
   <div id="mount-point"></div>
   ```
 
-  ``` js
+  ```js
   // 创建可复用的构造器
   var Profile = Vue.extend({
     template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>'
@@ -134,7 +134,7 @@
 
   结果：
 
-  ``` html
+  ```html
   <p>Walter White aka Heisenberg</p>
   ```
 
@@ -149,7 +149,7 @@
 
   延迟回调在下次 DOM 更新循环之后执行。在修改数据之后立即使用这个方法，等待 DOM 更新。
 
-  ``` js
+  ```js
   // 修改数据
   vm.msg = 'Hello'
   // DOM 没有更新
@@ -197,7 +197,7 @@
 
   注册或获取全局指令。
 
-  ``` js
+  ```js
   // 注册
   Vue.directive('my-directive', {
     bind: function () {},
@@ -226,7 +226,7 @@
 
   注册或获取全局的元素指令。
 
-  ``` js
+  ```js
   // 注册
   Vue.elementDirective('my-element', {
     bind: function () {},
@@ -250,7 +250,7 @@
 
   注册或获取全局过滤器。
 
-  ``` js
+  ```js
   // 注册
   Vue.filter('my-filter', function (value) {
     // 返回处理后的值
@@ -278,7 +278,7 @@
 
   注册或获取全局组件。
 
-  ``` js
+  ```js
   // 注册组件，传入一个扩展的构造器
   Vue.component('my-component', Vue.extend({ /* ... */}))
 
@@ -301,7 +301,7 @@
 
   注册或获取全局的过渡钩子对象。
 
-  ``` js
+  ```js
   // 注册
   Vue.transition('fade', {
     enter: function () {},
@@ -324,7 +324,7 @@
 
   注册或获取全局的 partial。
 
-  ``` js
+  ```js
   // 注册
   Vue.partial('my-partial', '<div>Hi</div>')
 
@@ -380,7 +380,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   var data = { a: 1 }
 
   // 直接创建一个实例
@@ -410,7 +410,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   // 简单语法
   Vue.component('props-demo-simple', {
     props: ['size', 'myMessage']
@@ -448,7 +448,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   var Comp = Vue.extend({
     props: ['msg'],
     template: '<div>{{ msg }}</div>'
@@ -535,7 +535,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   var vm = new Vue({
     data: {
       a: 1
@@ -607,11 +607,11 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   <div id="replace" class="foo"></div>
   ```
 
-  ``` js
+  ```js
   new Vue({
     el: '#replace',
     template: '<p class="bar">replaced</p>'
@@ -620,17 +620,17 @@
 
   结果：
 
-  ``` html
+  ```html
   <p class="foo bar" id="replace">replaced</p>
   ```
 
   `replace` 设为 `false`：
 
-  ``` html
+  ```html
   <div id="insert" class="foo"></div>
   ```
 
-  ``` js
+  ```js
   new Vue({
     el: '#insert',
     replace: false,
@@ -640,7 +640,7 @@
 
   结果：
 
-  ``` html
+  ```html
   <div id="insert" class="foo">
     <p class="bar">inserted</p>
   </div>
@@ -829,7 +829,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   var vm = new Vue({
     events: {
       'hook:created': function () {
@@ -867,7 +867,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   var mixin = {
     created: function () { console.log(1) }
   }
@@ -895,7 +895,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   var Ctor = Vue.extend({
     name: 'stack-overflow',
     template:
@@ -926,7 +926,7 @@
 
 - *示例：**
 
-  ``` js
+  ```js
   var CompA = { ... }
 
   // 扩展 CompA，不用调用 Vue.extend
@@ -966,7 +966,7 @@
 
   当前实例的初始化选项。在选项中包含自定义属性时有用处：
 
-  ``` js
+  ```js
   new Vue({
     customOption: 'foo',
     created: function () {
@@ -1053,7 +1053,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   // 键路径
   vm.$watch('a.b.c', function (newVal, oldVal) {
     // 做点什么
@@ -1077,7 +1077,7 @@
 
   `vm.$watch` 返回一个取消观察函数，用来停止触发回调：
 
-  ``` js
+  ```js
   var unwatch = vm.$watch('a', cb)
   // 之后取消观察
   unwatch()
@@ -1087,7 +1087,7 @@
 
   为了发现对象内部值的变化，可以在选项参数中指定 `deep: true`。注意监听数组的变动不需要这么做。
 
-  ``` js
+  ```js
   vm.$watch('someObject', callback, {
     deep: true
   })
@@ -1099,7 +1099,7 @@
 
   在选项参数中指定 `immediate: true` 将立即以表达式的当前值触发回调：
 
-  ``` js
+  ```js
   vm.$watch('a', callback, {
     immediate: true
   })
@@ -1117,7 +1117,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   var vm = new Vue({
     data: {
       a: {
@@ -1147,7 +1147,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   var vm = new Vue({
     data: {
       a: {
@@ -1187,7 +1187,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   // 假定 vm.msg = 'hello'
   vm.$eval('msg | uppercase') // -> 'HELLO'
   ```
@@ -1203,7 +1203,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   // 假定 vm.msg = 'hello'
   vm.$interpolate('{{msg}} world!') // -> 'hello world!'
   ```
@@ -1217,7 +1217,7 @@
 
   打印当前实例的数据，比起一堆 getter/setter 要友好。keypath 可选。
 
-  ``` js
+  ```js
   vm.$log() // 打印整个 ViewModel 的数据
   vm.$log('item') // 打印 vm.item
   ```
@@ -1236,7 +1236,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   vm.$on('test', function (msg) {
     console.log(msg)
   })
@@ -1290,7 +1290,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   // 创建父链
   var parent = new Vue()
   var child1 = new Vue({ parent: parent })
@@ -1326,7 +1326,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   var parent = new Vue()
   // child1 和 child2 是兄弟
   var child1 = new Vue({ parent: parent })
@@ -1410,7 +1410,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   new Vue({
     // ...
     methods: {
@@ -1453,7 +1453,7 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   var MyComponent = Vue.extend({
     template: '<div>Hello!</div>'
   })
@@ -1497,7 +1497,7 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   <span v-text="msg"></span>
   <!-- same as -->
   <span>{{msg}}</span>
@@ -1517,7 +1517,7 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   <div v-html="html"></div>
   <!-- 相同 -->
   <div>{{{html}}}</div>
@@ -1553,7 +1553,7 @@
 
   为 `v-if` 和 `v-show` 添加 “else 块”。
 
-  ``` html
+  ```html
   <div v-if="Math.random() > 0.5">
     Sorry
   </div>
@@ -1579,7 +1579,7 @@
 
   基于源数据将元素或模板块重复数次。指令的值必须使用特定语法 `alias (in|of) expression`，为当前遍历的元素提供别名：
 
-  ``` html
+  ```html
   <div v-for="item in items">
     {{ item.text }}
   </div>
@@ -1589,7 +1589,7 @@
 
   另外也可以为数组索引指定别名（如果值是对象可以为键指定别名）：
 
-  ``` html
+  ```html
   <div v-for="(index, item) in items"></div>
   <div v-for="(key, val) in object"></div>
   ```
@@ -1624,7 +1624,7 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   <!-- 方法处理器 -->
   <button v-on:click="doThis"></button>
 
@@ -1655,7 +1655,7 @@
 
   在子组件上监听自定义事件（当子组件触发 "my-event" 时将调用事件处理器）：
 
-  ``` html
+  ```html
   <my-component @my-event="handleThis"></my-component>
 
   <!-- 内联语句 -->
@@ -1689,7 +1689,7 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   <!-- 绑定 attribute -->
   <img v-bind:src="imageSrc">
 
@@ -1762,12 +1762,12 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   <comp v-ref:child></comp>
   <comp v-ref:some-child></comp>
   ```
 
-  ``` js
+  ```js
   // 从父组件访问
   this.$refs.child
   this.$refs.someChild
@@ -1775,11 +1775,11 @@
 
   使用 `v-for`：
 
-  ``` html
+  ```html
   <comp v-ref:list v-for="item in list"></comp>
   ```
 
-  ``` js
+  ```js
   // 值是一个数组
   this.$refs.list
   ```
@@ -1802,11 +1802,11 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   <span v-el:msg>hello</span>
   <span v-el:other-msg>world</span>
   ```
-  ``` js
+  ```js
   this.$els.msg.textContent // -> "hello"
   this.$els.otherMsg.textContent // -> "world"
   ```
@@ -1821,7 +1821,7 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   <span v-pre>{{ this will not be compiled }}</span>
   ```
 
@@ -1835,13 +1835,13 @@
 
 - **示例：**
 
-  ``` css
+  ```css
   [v-cloak] {
     display: none;
   }
   ```
 
-  ``` html
+  ```html
   <div v-cloak>
     {{ message }}
   </div>
@@ -1862,7 +1862,7 @@
 
   另一种调用组件的语法。主要是和 `is` 特性一起用于动态组件。
 
-  ``` html
+  ```html
   <!-- 动态组件 -->
   <!-- 由实例的 `componentId` 属性控制 -->
   <component :is="componentId"></component>
@@ -1894,12 +1894,12 @@
 
 - **示例：**
 
-  ``` js
+  ```js
   // 注册 partial
   Vue.partial('my-partial', '<p>This is a partial! {{msg}}</p>')
   ```
 
-  ``` html
+  ```html
   <!-- 静态 partial -->
   <partial name="my-partial"></partial>
 
@@ -1917,7 +1917,7 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   {{ msg | capitalize }}
   ```
 
@@ -1927,7 +1927,7 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   {{ msg | uppercase }}
   ```
 
@@ -1937,7 +1937,7 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   {{ msg | lowercase }}
   ```
 
@@ -1951,7 +1951,7 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   {{ amount | currency }}
   ```
 
@@ -1959,7 +1959,7 @@
 
   使用其它符号：
 
-  ``` html
+  ```html
   {{ amount | currency '£' }}
   ```
 
@@ -1967,7 +1967,7 @@
 
   一些货币使用 3 或 4 个小数位，而一些货币不会，例如日元（¥）、越南盾（₫）：
 
-  ``` html
+  ```html
   {{ amount | currency '₫' 0 }}
   ```
 
@@ -1984,14 +1984,14 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   {{count}} {{count | pluralize 'item'}}
   ```
 
   *1 => '1 item'*
   *2 => '2 items'*
 
-  ``` html
+  ```html
   {{date}}{{date | pluralize 'st' 'nd' 'rd' 'th'}}
   ```
 
@@ -2016,7 +2016,7 @@
 
   以四个空格的缩进打印一个对象：
 
-  ``` html
+  ```html
   <pre>{{ nestedObject | json 4 }}</pre>
   ```
 
@@ -2033,7 +2033,7 @@
 
 - **示例：**
 
-  ``` html
+  ```html
   <input @keyup="onKeyup | debounce 500">
   ```
 
@@ -2049,7 +2049,7 @@
 
  限制数组为开始 N 个元素，N 由第一个参数指定。第二个参数是可选的，指定开始的偏移量。
 
-  ``` html
+  ```html
   <!-- 只显示开始 10 个元素 -->
   <div v-for="item in items | limitBy 10"></div>
 
@@ -2072,7 +2072,7 @@
 
   如果第一个参数是字符串，则在每个数组元素中搜索它：
 
-  ``` html
+  ```html
   <div v-for="item in items | filterBy 'hello'">
   ```
 
@@ -2080,7 +2080,7 @@
 
   如果 item 是一个对象，过滤器将递归地在它所有属性中搜索。为了缩小搜索范围，可以指定一个搜索字段：
 
-  ``` html
+  ```html
   <div v-for="user in users | filterBy 'Jack' in 'name'">
   ```
 
@@ -2088,7 +2088,7 @@
 
   上例使用静态参数，当然可以使用动态参数作为搜索目标或搜索字段。配合 `v-model` 我们可以轻松实现输入提示效果：
 
-  ``` html
+  ```html
   <div id="filter-by-example">
     <input v-model="name">
     <ul>
@@ -2099,7 +2099,7 @@
   </div>
   ```
 
-  ``` js
+  ```js
   new Vue({
     el: '#filter-by-example',
     data: {
@@ -2137,20 +2137,20 @@
 
   多搜索字段：
 
-  ``` html
+  ```html
   <li v-for="user in users | filterBy searchText in 'name' 'phone'"></li>
   ```
 
   多搜索字段为一个动态数组：
 
-  ``` html
+  ```html
   <!-- fields = ['fieldA', 'fieldB'] -->
   <div v-for="user in users | filterBy searchText in fields">
   ```
 
   使用自定义过滤函数：
 
-  ``` html
+  ```html
   <div v-for="user in users | filterBy myCustomFilterFunction">
   ```
 
@@ -2172,7 +2172,7 @@
 
   按名字排序用户：
 
-  ``` html
+  ```html
   <ul>
     <li v-for="user in users | orderBy 'name'">
       {{ user.name }}
@@ -2182,7 +2182,7 @@
 
   降序：
 
-  ``` html
+  ```html
   <ul>
     <li v-for="user in users | orderBy 'name' -1">
       {{ user.name }}
@@ -2192,7 +2192,7 @@
 
   原始类型数组：
 
-  ``` html
+  ```html
   <ul>
     <li v-for="n in numbers | orderBy true">
       {{ n }}
@@ -2202,7 +2202,7 @@
 
   动态排序：
 
-  ``` html
+  ```html
   <div id="orderby-example">
     <button @click="order = order * -1">Reverse Sort Order</button>
     <ul>
@@ -2213,7 +2213,7 @@
   </div>
   ```
 
-  ``` js
+  ```js
   new Vue({
     el: '#orderby-example',
     data: {
@@ -2225,7 +2225,7 @@
 
   使用两个键名排序：
 
-  ``` html
+  ```html
   <ul>
     <li v-for="user in users | orderBy 'lastName' 'firstName'">
       {{ user.lastName }} {{ user.firstName }}
@@ -2255,7 +2255,7 @@
 
   使用一个函数排序：
 
-  ``` html
+  ```html
   <div id="orderby-compare-example" class="demo">
     <button @click="order = order * -1">Reverse Sort Order</button>
     <ul>
@@ -2266,7 +2266,7 @@
   </div>
   ```
 
-  ``` js
+  ```js
   new Vue({
     el: '#orderby-compare-example',
     data: {
@@ -2346,7 +2346,7 @@ Vue.js 在 `Array.prototype` 上添加了两个方法，以方便常见的数组
 
   通过索引设置数组元素并触发视图更新。
 
-  ``` js
+  ```js
   vm.animals.$set(0, { name: 'Aardvark' })
   ```
 
@@ -2361,7 +2361,7 @@ Vue.js 在 `Array.prototype` 上添加了两个方法，以方便常见的数组
 
   通过索引删除数组元素并触发视图更新。这个方法先在数组中搜索这个元素，如果找到了则调用 `array.splice(index, 1)`。
 
-  ``` js
+  ```js
   var aardvark = vm.animals[0]
   vm.animals.$remove(aardvark)
   ```

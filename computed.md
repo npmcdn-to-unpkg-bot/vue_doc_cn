@@ -4,13 +4,13 @@
 
 ### 基础例子
 
-``` html
+```html
 <div id="example">
   a={{ a }}, b={{ b }}
 </div>
 ```
 
-``` js
+```js
 var vm = new Vue({
   el: '#example',
   data: {
@@ -49,7 +49,7 @@ var vm = new Vue({
 
 这里我们声明了一个计算属性 `b`。我们提供的函数将用作属性 `vm.b`的 getter。
 
-``` js
+```js
 console.log(vm.b) // -> 2
 vm.a = 2
 console.log(vm.b) // -> 3
@@ -63,11 +63,11 @@ console.log(vm.b) // -> 3
 
 Vue.js 提供了一个方法 `$watch`，它用于观察 Vue 实例上的数据变动。当一些数据需要根据其它数据变化时， `$watch` 很诱人 —— 特别是如果你来自 AngularJS。不过，通常更好的办法是使用计算属性而不是一个命令式的 `$watch` 回调。考虑下面例子：
 
-``` html
+```html
 <div id="demo">{{fullName}}</div>
 ```
 
-``` js
+```js
 var vm = new Vue({
   el: '#demo',
   data: {
@@ -88,7 +88,7 @@ vm.$watch('lastName', function (val) {
 
 上面代码是命令式的重复的。跟计算属性对比：
 
-``` js
+```js
 var vm = new Vue({
   data: {
     firstName: 'Foo',
@@ -108,7 +108,7 @@ var vm = new Vue({
 
 计算属性默认只是 getter，不过在需要时你也可以提供一个 setter：
 
-``` js
+```js
 // ...
 computed: {
   fullName: {

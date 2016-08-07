@@ -6,7 +6,7 @@
 
 **示例：**
 
-``` html
+```html
 <ul id="example-1">
   <li v-for="item in items">
     {{ item.message }}
@@ -14,7 +14,7 @@
 </ul>
 ```
 
-``` js
+```js
 var example1 = new Vue({
   el: '#example-1',
   data: {
@@ -54,7 +54,7 @@ var example1 = new Vue({
 
 在 `v-for` 块内我们能完全访问父组件作用域内的属性，另有一个特殊变量 `$index`，正如你猜到的，它是当前数组元素的索引：
 
-``` html
+```html
 <ul id="example-2">
   <li v-for="item in items">
     {{ parentMessage }} - {{ $index }} - {{ item.message }}
@@ -62,7 +62,7 @@ var example1 = new Vue({
 </ul>
 ```
 
-``` js
+```js
 var example2 = new Vue({
   el: '#example-2',
   data: {
@@ -104,7 +104,7 @@ var example2 = new Vue({
 
 另外，你可以为索引指定一个别名（如果 `v-for` 用于一个对象，则可以为对象的键指定一个别名）：
 
-``` html
+```html
 <div v-for="(index, item) in items">
   {{ index }} {{ item.message }}
 </div>
@@ -112,7 +112,7 @@ var example2 = new Vue({
 
 从 1.0.17 开始可以使用 `of` 分隔符，更接近 JavaScript 遍历器语法：
 
-``` html
+```html
 <div v-for="item of items"></div>
 ```
 
@@ -120,7 +120,7 @@ var example2 = new Vue({
 
 类似于 template `v-if`，也可以将 `v-for` 用在 `<template>` 标签上，以渲染一个包含多个元素的块。例如：
 
-``` html
+```html
 <ul>
   <template v-for="item in items">
     <li>{{ item.msg }}</li>
@@ -149,7 +149,7 @@ Vue.js 包装了被观察数组的变异方法，故它们能触发视图更新�
 
 变异方法，如名字所示，修改了原始数组。相比之下，也有非变异方法，如 `filter()`, `concat()` 和 `slice()`，不会修改原始数组而是返回一个新数组。在使用非变异方法时，可以直接用新数组替换旧数组：
 
-``` js
+```js
 example1.items = example1.items.filter(function (item) {
   return item.message.match(/Foo/)
 })
@@ -163,7 +163,7 @@ example1.items = example1.items.filter(function (item) {
 
 例如，假定数据为：
 
-``` js
+```js
 {
   items: [
     { _uid: '88f869d', ... },
@@ -174,7 +174,7 @@ example1.items = example1.items.filter(function (item) {
 
 然后可以这样给出提示：
 
-``` html
+```html
 <div v-for="item in items" track-by="_uid">
   <!-- content -->
 </div>
@@ -197,7 +197,7 @@ example1.items = example1.items.filter(function (item) {
 
 为了解决问题 (1)，Vue.js 扩展了观察数组，为它添加了一个 `$set()` 方法：
 
-``` js
+```js
 // 与 `example1.items[0] = ...` 相同，但是能触发视图更新
 example1.items.$set(0, { childMsg: 'Changed!'})
 ```
@@ -206,7 +206,7 @@ example1.items.$set(0, { childMsg: 'Changed!'})
 
 除了 `$set()`， Vue.js 也为观察数组添加了 `$remove()` 方法，用于从目标数组中查找并删除元素，在内部它调用 `splice()` 。因此，不必这样：
 
-``` js
+```js
 var index = this.items.indexOf(item)
 if (index !== -1) {
   this.items.splice(index, 1)
@@ -215,7 +215,7 @@ if (index !== -1) {
 
 只用这样：
 
-``` js
+```js
 this.items.$remove(item)
 ```
 
@@ -227,7 +227,7 @@ this.items.$remove(item)
 
 也可以使用 `v-for` 遍历对象。除了 `$index` 之外，作用域内还可以访问另外一个特殊变量 `$key`。
 
-``` html
+```html
 <ul id="repeat-object" class="demo">
   <li v-for="value in object">
     {{ $key }} : {{ value }}
@@ -235,7 +235,7 @@ this.items.$remove(item)
 </ul>
 ```
 
-``` js
+```js
 new Vue({
   el: '#repeat-object',
   data: {
@@ -272,7 +272,7 @@ new Vue({
 
 也可以给对象的键提供一个别名：
 
-``` html
+```html
 <div v-for="(key, val) in object">
   {{ key }} {{ val }}
 </div>
@@ -284,7 +284,7 @@ new Vue({
 
 `v-for` 也可以接收一个整数，此时它将重复模板数次。
 
-``` html
+```html
 <div>
   <span v-for="n in 10">{{ n }} </span>
 </div>
