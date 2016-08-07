@@ -18,7 +18,7 @@
 
 **示例**
 
-```js
+```
 Vue.directive('my-directive', {
   bind: function () {
     // 准备工作
@@ -37,13 +37,13 @@ Vue.directive('my-directive', {
 
 在注册之后，便可以在 Vue.js 模板中这样用（记着添加前缀 `v-`）：
 
-```html
+```
 <div v-my-directive="someValue"></div>
 ```
 
 当只需要 `update` 函数时，可以传入一个函数替代定义对象：
 
-```js
+```
 Vue.directive('my-directive', function (value) {
   // 这个函数用作 update()
 })
@@ -65,11 +65,11 @@ Vue.directive('my-directive', function (value) {
 
 示例：
 
-```html
+```
 <div id="demo" v-demo:hello.a.b="msg"></div>
 ```
 
-```js
+```
 Vue.directive('demo', {
   bind: function () {
     console.log('demo bound!')
@@ -120,11 +120,11 @@ var demo = new Vue({
 
 如果指令需要多个值，可以传入一个 JavaScript 对象字面量。记住，指令可以使用任意合法的 JavaScript 表达式：
 
-```html
+```
 <div v-demo="{ color: 'white', text: 'hello!' }"></div>
 ```
 
-```js
+```
 Vue.directive('demo', function (value) {
   console.log(value.color) // "white"
   console.log(value.text) // "hello!"
@@ -135,10 +135,10 @@ Vue.directive('demo', function (value) {
 
 当指令使用了字面修饰符，它的值将按普通字符串处理并传递给 `update` 方法。`update` 方法将只调用一次，因为普通字符串不能响应数据变化。
 
-```html
+```
 <div v-demo.literal="foo bar baz">
 ```
-```js
+```
 Vue.directive('demo', function (value) {
   console.log(value) // "foo bar baz"
 })
@@ -148,7 +148,7 @@ Vue.directive('demo', function (value) {
 
 有时我们想以自定义元素的形式使用指令，而不是以特性的形式。这与 Angular 的 “E” 指令非常相似。元素指令可以看做是一个轻量组件。可以像下面这样注册一个自定义元素指令：
 
-```js
+```
 Vue.elementDirective('my-directive', {
   // API 同普通指令
   bind: function () {
@@ -159,13 +159,13 @@ Vue.elementDirective('my-directive', {
 
 不这样写：
 
-```html
+```
 <div v-my-directive></div>
 ```
 
 这样写：
 
-```html
+```
 <my-directive></my-directive>
 ```
 
@@ -179,10 +179,10 @@ Vue.elementDirective('my-directive', {
 
 自定义指令可以接收一个 `params` 数组，指定一个特性列表，Vue 编译器将自动提取绑定元素的这些特性。例如：
 
-```html
+```
 <div v-example a="hi"></div>
 ```
-```js
+```
 Vue.directive('example', {
   params: ['a'],
   bind: function () {
@@ -193,10 +193,10 @@ Vue.directive('example', {
 
 此 API 也支持动态属性。`this.params[key]` 会自动保持更新。另外，可以指定一个回调，在值变化时调用：
 
-```html
+```
 <div v-example v-bind:a="someValue"></div>
 ```
-```js
+```
 Vue.directive('example', {
   params: ['a'],
   paramWatchers: {
@@ -213,11 +213,11 @@ Vue.directive('example', {
 
 如果自定义指令用在一个对象上，当对象内部属性变化时要触发 `update`，则在指令定义对象中指定 `deep: true`。
 
-```html
+```
 <div v-my-directive="obj"></div>
 ```
 
-```js
+```
 Vue.directive('my-directive', {
   deep: true,
   update: function (obj) {
@@ -230,7 +230,7 @@ Vue.directive('my-directive', {
 
 如果指令想向 Vue 实例写回数据，则在指令定义对象中指定 `twoWay: true` 。该选项允许在指令中使用 `this.set(value)`:
 
-```js
+```
 Vue.directive('example', {
   twoWay: true,
   bind: function () {
@@ -252,11 +252,11 @@ Vue.directive('example', {
 
 传入 `acceptStatement:true` 可以让自定义指令接受内联语句，就像 `v-on` 那样：
 
-```html
+```
 <div v-my-directive="a++"></div>
 ```
 
-```js
+```
 Vue.directive('my-directive', {
   acceptStatement: true,
   update: function (fn) {
@@ -276,7 +276,7 @@ Vue 通过递归遍历 DOM 树来编译模块。但是当它遇到 **terminal** 
 
 编写自定义 terminal 指令是一个高级话题，需要较好的理解 Vue 的编译流程，但这不是说不可能编写自定义 terminal 指令。用 `terminal: true` 指定自定义 terminal 指令，可能还需要用 `Vue.FragmentFactory` 来编译 partial。下面是一个自定义 terminal 指令，它编译它的内容模板并将结果注入到页面的另一个地方：
 
-```js
+```
 var FragmentFactory = Vue.FragmentFactory
 var remove = Vue.util.remove
 var createAnchor = Vue.util.createAnchor
@@ -299,7 +299,7 @@ Vue.directive('inject', {
 })
 ```
 
-```html
+```
 <div id="modal"></div>
 ...
 <div v-inject:modal>

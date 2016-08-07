@@ -16,7 +16,7 @@
 
 受 ES5 的限制，Vue.js **不能检测到对象属性的添加或删除**。因为 Vue.js 在初始化实例时将属性转为 getter/setter，所以属性必须在 `data` 对象上才能让 Vue.js 转换它，才能让它是响应的。例如：
 
-```js
+```
 var data = { a: 1 }
 var vm = new Vue({
   data: data
@@ -34,21 +34,21 @@ data.b = 2
 
 对于 Vue 实例，可以使用 `$set(key, value)` 实例方法：
 
-```js
+```
 vm.$set('b', 2)
 // `vm.b` 和 `data.b` 现在是响应的
 ```
 
 对于普通数据对象，可以使用全局方法 `Vue.set(object, key, value)`：
 
-```js
+```
 Vue.set(data, 'c', 3)
 // `vm.c` 和 `data.c` 现在是响应的
 ```
 
 有时你想向已有对象上添加一些属性，例如使用 `Object.assign()` 或 `_.extend()` 添加属性。但是，添加到对象上的新属性不会触发更新。这时可以创建一个新的对象，包含原对象的属性和新的属性：
 
-```js
+```
 // 不使用 `Object.assign(this.someObject, { a: 1, b: 2 })`
 this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })
 ```
@@ -61,7 +61,7 @@ this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })
 
 不这么做：
 
-```js
+```
 var vm = new Vue({
   template: '<div>{{msg}}</div>'
 })
@@ -71,7 +71,7 @@ vm.$set('msg', 'Hello!')
 
 这么做：
 
-```js
+```
 var vm = new Vue({
   data: {
     // 以一个空值声明 `msg`
@@ -96,11 +96,11 @@ Vue.js 默认**异步**更新 DOM。每当观察到数据变化时，Vue 就开�
 
 例如，设置了 `vm.someData = 'new value'`，DOM 不会立即更新，而是在下一次事件循环清空队列时更新。我们基本不用关心这个过程，但是如果想在 DOM 状态更新后做点什么，这会有帮助。尽管 Vue.js 鼓励开发者沿着数据驱动的思路，避免直接修改 DOM，但是有时确实要这么做。为了在数据变化之后等待 Vue.js 完成更新 DOM，可以在数据变化之后立即使用 `Vue.nextTick(callback)` 。回调在 DOM 更新完成后调用。例如：
 
-```html
+```
 <div id="example">{{msg}}</div>
 ```
 
-```js
+```
 var vm = new Vue({
   el: '#example',
   data: {
@@ -116,7 +116,7 @@ Vue.nextTick(function () {
 
 `vm.$nextTick()` 这个实例方法比较方便，因为它不需要全局 `Vue`，它的回调的 `this` 自动绑定到当前 Vue 实例：
 
-```js
+```
 Vue.component('example', {
   template: '<span>{{msg}}</span>',
   data: function () {
@@ -144,7 +144,7 @@ Vue.component('example', {
 
 由于计算属性被缓存了，在访问它时 getter 不总是被调用。考虑下例：
 
-```js
+```
 var vm = new Vue({
   data: {
     msg: 'hi'
@@ -161,7 +161,7 @@ var vm = new Vue({
 
 有时希望 getter 不改变原有的行为，每次访问 `vm.example` 时都调用 getter。这时可以为指定的计算属性关闭缓存：
 
-```js
+```
 computed: {
   example: {
     cache: false,

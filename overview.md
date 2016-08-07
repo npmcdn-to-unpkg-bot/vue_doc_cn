@@ -14,14 +14,14 @@ Vue.js 的核心是一个响应的数据绑定系统，它让数据与 DOM 保�
 
 可能是最简单的例子：
 
-```html
+```
 <!-- 这是我们的 View -->
 <div id="example-1">
   Hello {{ name }}!
 </div>
 ```
 
-```js
+```
 // 这是我们的 Model
 var exampleData = {
   name: 'Vue.js'
@@ -55,13 +55,13 @@ var exampleVM = new Vue({
 
 让我们来看第二个例子：
 
-```html
+```
 <div id="example-2">
   <p v-if="greeting">Hello!</p>
 </div>
 ```
 
-```js
+```
 var exampleVM2 = new Vue({
   el: '#example-2',
   data: {
@@ -98,7 +98,7 @@ var exampleVM2 = new Vue({
 
 实际上，一个典型的用 Vue.js 构建的大型应用将形成一个组件树。在后面的教程中我们将详述组件，不过这里有一个假想的例子，看看使用了组件的应用模板是什么样的：
 
-```html
+```
 <div id="app">
   <app-nav></app-nav>
   <app-view>

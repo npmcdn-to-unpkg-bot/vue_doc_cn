@@ -6,7 +6,7 @@
 
 示例：
 
-```js
+```
 // 定义一个混合对象
 var myMixin = {
   created: function () {
@@ -31,7 +31,7 @@ var component = new Component() // -> "hello from mixin!"
 
 当混合对象与组件包含同名选项时，这些选项将以适当的策略合并。例如，同名钩子函数被并入一个数组，因而都会被调用。另外，混合的钩子将在组件自己的钩子**之前**调用。
 
-```js
+```
 var mixin = {
   created: function () {
     console.log('mixin hook called')
@@ -51,7 +51,7 @@ new Vue({
 
 值为对象的选项，如 `methods`, `components` 和 `directives` 将合并到同一个对象内。如果键冲突则组件的选项优先。
 
-```js
+```
 var mixin = {
   methods: {
     foo: function () {
@@ -86,7 +86,7 @@ vm.conflicting() // -> "from self"
 
 也可以全局注册混合。小心使用！一旦全局注册混合，它会影响**所有**之后创建的 Vue 实例。如果使用恰当，可以为自定义选项注入处理逻辑：
 
-```js
+```
 // 为 `myOption` 自定义选项注入一个处理器
 Vue.mixin({
   created: function () {
@@ -109,7 +109,7 @@ new Vue({
 
 在合并自定义选项时，默认的合并策略是简单地覆盖已有值。如果想用自定义逻辑合并自定义选项，则向 `Vue.config.optionMergeStrategies` 添加一个函数：
 
-```js
+```
 Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {
   // 返回 mergedVal
 }
@@ -117,7 +117,7 @@ Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {
 
 对于多数值为对象的选项，可以简单地使用 `methods` 所用的合并策略:
 
-```js
+```
 var strategies = Vue.config.optionMergeStrategies
 strategies.myOption = strategies.methods
 ```

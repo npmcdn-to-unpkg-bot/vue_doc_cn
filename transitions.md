@@ -4,7 +4,7 @@
 
 为了应用过渡效果，需要在目标元素上使用 `transition` 特性：
 
-```html
+```
 <div v-if="show" transition="my-transition"></div>
 ```
 
@@ -30,7 +30,7 @@
 
 典型的 CSS 过渡像这样：
 
-```html
+```
 <div v-if="show" transition="expand">hello</div>
 ```
 
@@ -57,11 +57,11 @@
 
 你可以在同一元素上通过动态绑定实现不同的过渡：
 
-```html
+```
 <div v-if="show" :transition="transitionName">hello</div>
 ```
 
-```js
+```
 new Vue({
   el: '...',
   data: {
@@ -73,7 +73,7 @@ new Vue({
 
 另外，可以提供 JavaScript 钩子:
 
-```js
+```
 Vue.transition('expand', {
 
   beforeEnter: function (el) {
@@ -176,11 +176,11 @@ new Vue({
 
 我们可以在过渡的 JavaScript 定义中声明自定义的 CSS 过渡类名。这些自定义类名会覆盖默认的类名。当需要和第三方的 CSS 动画库，比如 [Animate.css](https://daneden.github.io/animate.css/) 配合时会非常有用：
 
-```html
+```
 <div v-show="ok" class="animated" transition="bounce">Watch me bounce</div>
 ```
 
-```js
+```
 Vue.transition('bounce', {
   enterClass: 'bounceInLeft',
   leaveClass: 'bounceOutRight'
@@ -193,7 +193,7 @@ Vue.transition('bounce', {
 
 Vue.js 需要给过渡元素添加事件侦听器来侦听过渡何时结束。基于所使用的 CSS，该事件要么是 `transitionend`，要么是 `animationend`。如果你只使用了两者中的一种，那么 Vue.js 将能够根据生效的 CSS 规则自动推测出对应的事件类型。但是，有些情况下一个元素可能需要同时带有两种类型的动画。比如你可能希望让 Vue 来触发一个 CSS animation，同时该元素在鼠标悬浮时又有 CSS transition 效果。这样的情况下，你需要显式地声明你希望 Vue 处理的动画类型 (`animation` 或是 `transition`)：
 
-```js
+```
 Vue.transition('bounce', {
   // 该过渡效果将只侦听 `animationend` 事件
   type: 'animation'
@@ -227,7 +227,7 @@ Vue.transition('bounce', {
 
 最后，`enter` 和 `leave` 可以有第二个可选的回调参数，用于显式控制过渡如何结束。因此不必等待 CSS `transitionend` 事件， Vue.js 将等待你手工调用这个回调，以结束过渡。例如：
 
-```js
+```
 enter: function (el) {
   // 没有第二个参数
   // 由 CSS transitionend 事件决定过渡何时结束
@@ -236,7 +236,7 @@ enter: function (el) {
 
 vs.
 
-```js
+```
 enter: function (el, done) {
   // 有第二个参数
   // 过渡只有在调用 `done` 时结束
@@ -251,7 +251,7 @@ CSS 动画用法同 CSS 过渡，区别是在动画中 `v-enter` 类名在节点
 
 示例： (省略了兼容性前缀)
 
-```html
+```
 <span v-show="show" transition="bounce">Look at me!</span>
 ```
 
@@ -382,7 +382,7 @@ new Vue({
 
 在下例中我们使用 jQuery 注册一个自定义的 JavaScript 过渡：
 
-```js
+```
 Vue.transition('fade', {
   css: false,
   enter: function (el, done) {
@@ -407,7 +407,7 @@ Vue.transition('fade', {
 
 然后用 `transition` 特性中：
 
-```html
+```
 <p transition="fade"></p>
 ```
 
@@ -415,13 +415,13 @@ Vue.transition('fade', {
 
 `transition` 与 `v-for` 一起用时可以创建渐近过渡。给过渡元素添加一个特性 `stagger`, `enter-stagger` 或 `leave-stagger`：
 
-```html
+```
 <div v-for="item in list" transition="stagger" stagger="100"></div>
 ```
 
 或者，提供一个钩子 `stagger`, `enter-stagger` 或 `leave-stagger`，以更好的控制：
 
-```js
+```
 Vue.transition('stagger', {
   stagger: function (index) {
     // 每个过渡项目增加 50ms 延时

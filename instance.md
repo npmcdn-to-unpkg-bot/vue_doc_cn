@@ -4,7 +4,7 @@
 
 每个 Vue.js 应用的起步都是通过构造函数 `Vue` 创建一个 **Vue 的根实例**：
 
-```js
+```
 var vm = new Vue({
   // 选项
 })
@@ -16,7 +16,7 @@ var vm = new Vue({
 
 可以扩展 `Vue` 构造器，从而用预定义选项创建可复用的**组件构造器**：
 
-```js
+```
 var MyComponent = Vue.extend({
   // 扩展选项
 })
@@ -31,7 +31,7 @@ var myComponentInstance = new MyComponent()
 
 每个 Vue 实例都会**代理**其 `data` 对象里所有的属性：
 
-```js
+```
 var data = { a: 1 }
 var vm = new Vue({
   data: data
@@ -52,7 +52,7 @@ vm.a // -> 3
 
 除了这些数据属性，Vue 实例暴露了一些有用的实例属性与方法。这些属性与方法都有前缀 `$`，以便与代理的数据属性区分。例如：
 
-```js
+```
 var data = { a: 1 }
 var vm = new Vue({
   el: '#example',
@@ -74,7 +74,7 @@ vm.$watch('a', function (newVal, oldVal) {
 
 Vue 实例在创建时有一系列初始化步骤——例如，它需要建立数据观察，编译模板，创建必要的数据绑定。在此过程中，它也将调用一些**生命周期钩子**，给自定义逻辑提供运行机会。例如 `created`  钩子在实例创建后调用：
 
-```js
+```
 var vm = new Vue({
   data: {
     a: 1

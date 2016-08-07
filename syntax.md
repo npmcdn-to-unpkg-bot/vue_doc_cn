@@ -8,7 +8,7 @@ Vue.js 的模板是基于 DOM 实现的。这意味着所有的 Vue.js 模板都
 
 数据绑定最基础的形式是文本插值，使用 "Mustache" 语法（双大括号）：
 
-```html
+```
 <span>Message: {{ msg }}</span>
 ```
 
@@ -16,7 +16,7 @@ Mustache 标签会被相应数据对象的 `msg` 属性的值替换。每当这�
 
 你也可以只处理单次插值，今后的数据变化就不会再引起插值更新了：
 
-```html
+```
 <span>This will never change: {{* msg }}</span>
 ```
 
@@ -24,7 +24,7 @@ Mustache 标签会被相应数据对象的 `msg` 属性的值替换。每当这�
 
 双 Mustache 标签将数据解析为纯文本而不是 HTML。为了输出真的 HTML 字符串，需要用三 Mustache 标签：
 
-```html
+```
 <div>{{{ raw_html }}}</div>
 ```
 
@@ -36,7 +36,7 @@ Mustache 标签会被相应数据对象的 `msg` 属性的值替换。每当这�
 
 Mustache 标签也可以用在 HTML 特性 (Attributes) 内：
 
-```html
+```
 <div id="item-{{ id }}"></div>
 ```
 
@@ -50,7 +50,7 @@ Mustache 标签也可以用在 HTML 特性 (Attributes) 内：
 
 到目前为止，我们的模板只绑定到简单的属性键。不过实际上 Vue.js 在数据绑定内支持全功能的 JavaScript 表达式：
 
-```html
+```
 {{ number + 1 }}
 
 {{ ok ? 'YES' : 'NO' }}
@@ -60,7 +60,7 @@ Mustache 标签也可以用在 HTML 特性 (Attributes) 内：
 
 这些表达式将在所属的 Vue 实例的作用域内计算。一个限制是每个绑定只能包含**单个表达式**，因此下面的语句是**无效**的：
 
-```html
+```
 <!-- 这是一个语句，不是一个表达式： -->
 {{ var a = 1 }}
 
@@ -72,7 +72,7 @@ Mustache 标签也可以用在 HTML 特性 (Attributes) 内：
 
 Vue.js 允许在表达式后添加可选的“过滤器 (Filter) ”，以“管道符”指示：
 
-```html
+```
 {{ message | capitalize }}
 ```
 
@@ -82,13 +82,13 @@ Vue.js 允许在表达式后添加可选的“过滤器 (Filter) ”，以“管
 
 过滤器可以串联：
 
-```html
+```
 {{ message | filterA | filterB }}
 ```
 
 过滤器也可以接受参数：
 
-```html
+```
 {{ message | filterA 'arg1' arg2 }}
 ```
 
@@ -98,7 +98,7 @@ Vue.js 允许在表达式后添加可选的“过滤器 (Filter) ”，以“管
 
 指令 (Directives) 是特殊的带有前缀 `v-` 的特性。指令的值限定为**绑定表达式**，因此上面提到的 JavaScript 表达式及过滤器规则在这里也适用。指令的职责就是当其表达式的值改变时把某些特殊的行为应用到 DOM 上。我们来回头看下“概述”里的例子：
 
-```html
+```
 <p v-if="greeting">Hello!</p>
 ```
 
@@ -108,7 +108,7 @@ Vue.js 允许在表达式后添加可选的“过滤器 (Filter) ”，以“管
 
 有些指令可以在其名称后面带一个“参数” (Argument)，中间放一个冒号隔开。例如，`v-bind` 指令用于响应地更新 HTML 特性：
 
-```html
+```
 <a v-bind:href="url"></a>
 ```
 
@@ -116,7 +116,7 @@ Vue.js 允许在表达式后添加可选的“过滤器 (Filter) ”，以“管
 
 另一个例子是 `v-on` 指令，它用于监听 DOM 事件：
 
-```html
+```
 <a v-on:click="doSomething">
 ```
 
@@ -126,7 +126,7 @@ Vue.js 允许在表达式后添加可选的“过滤器 (Filter) ”，以“管
 
 修饰符 (Modifiers) 是以半角句号 `.` 开始的特殊后缀，用于表示指令应当以特殊方式绑定。例如 `.literal` 修饰符告诉指令将它的值解析为一个字面字符串而不是一个表达式：
 
-```html
+```
 <a v-bind:href.literal="/a/b/c"></a>
 ```
 
@@ -138,7 +138,7 @@ Vue.js 允许在表达式后添加可选的“过滤器 (Filter) ”，以“管
 
 ### `v-bind` 缩写
 
-```html
+```
 <!-- 完整语法 -->
 <a v-bind:href="url"></a>
 
@@ -154,7 +154,7 @@ Vue.js 允许在表达式后添加可选的“过滤器 (Filter) ”，以“管
 
 ### `v-on` 缩写
 
-```html
+```
 <!-- 完整语法 -->
 <a v-on:click="doSomething"></a>
 

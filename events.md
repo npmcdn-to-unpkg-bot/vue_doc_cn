@@ -4,7 +4,7 @@
 
 可以用 `v-on` 指令监听 DOM 事件：
 
-```html
+```
 <div id="example">
   <button v-on:click="greet">Greet</button>
 </div>
@@ -12,7 +12,7 @@
 
 我们绑定了一个单击事件处理器到一个方法 `greet`。下面在 Vue 实例中定义这个方法：
 
-```js
+```
 var vm = new Vue({
   el: '#example',
   data: {
@@ -62,13 +62,13 @@ var vm = new Vue({
 
 除了直接绑定到一个方法，也可以用内联 JavaScript 语句：
 
-```html
+```
 <div id="example-2">
   <button v-on:click="say('hi')">Say Hi</button>
   <button v-on:click="say('what')">Say What</button>
 </div>
 ```
-```js
+```
 new Vue({
   el: '#example-2',
   methods: {
@@ -101,11 +101,11 @@ new Vue({
 
 有时也需要在内联语句处理器中访问原生 DOM 事件。可以用特殊变量 `$event` 把它传入方法：
 
-```html
+```
 <button v-on:click="say('hello!', $event)">Submit</button>
 ```
 
-```js
+```
 // ...
 methods: {
   say: function (msg, event) {
@@ -121,7 +121,7 @@ methods: {
 
 为了解决这个问题，Vue.js 为 `v-on` 提供两个 **事件修饰符**：`.prevent` 与 `.stop`。你是否还记得修饰符是点号打头的指令后缀？
 
-```html
+```
 <!-- 阻止单击事件冒泡 -->
 <a v-on:click.stop="doThis"></a>
 
@@ -137,7 +137,7 @@ methods: {
 
 1.0.16 添加了两个额外的修饰符：
 
-```html
+```
 <!-- 添加事件侦听器时使用 capture 模式 -->
 <div v-on:click.capture="doThis">...</div>
 
@@ -149,14 +149,14 @@ methods: {
 
 在监听键盘事件时，我们经常需要检测 keyCode。Vue.js 允许为 `v-on` 添加按键修饰符：
 
-```html
+```
 <!-- 只有在 keyCode 是 13 时调用 vm.submit() -->
 <input v-on:keyup.13="submit">
 ```
 
 记住所有的 keyCode 比较困难，Vue.js 为最常用的按键提供别名：
 
-```html
+```
 <!-- 同上 -->
 <input v-on:keyup.enter="submit">
 
@@ -180,7 +180,7 @@ methods: {
 
 **1.0.17+：** 可以自定义按键别名：
 
-```js
+```
 // 可以使用 @keyup.f1
 Vue.directive('on').keyCodes.f1 = 112
 ```

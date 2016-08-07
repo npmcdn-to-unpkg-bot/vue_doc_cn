@@ -10,10 +10,10 @@
 
 我们可以传给 `v-bind:class` 一个对象，以动态地切换 class。注意  `v-bind:class` 指令可以与普通的 `class` 特性共存：
 
-```html
+```
 <div class="static" v-bind:class="{ 'class-a': isA, 'class-b': isB }"></div>
 ```
-```js
+```
 data: {
   isA: true,
   isB: false
@@ -22,7 +22,7 @@ data: {
 
 渲染为：
 
-```html
+```
 <div class="static class-a"></div>
 ```
 
@@ -30,10 +30,10 @@ data: {
 
 你也可以直接绑定数据里的一个对象：
 
-```html
+```
 <div v-bind:class="classObject"></div>
 ```
-```js
+```
 data: {
   classObject: {
     'class-a': true,
@@ -48,10 +48,10 @@ data: {
 
 我们可以把一个数组传给 `v-bind:class`，以应用一个 class 列表：
 
-```html
+```
 <div v-bind:class="[classA, classB]">
 ```
-```js
+```
 data: {
   classA: 'class-a',
   classB: 'class-b'
@@ -60,13 +60,13 @@ data: {
 
 渲染为：
 
-```html
+```
 <div class="class-a class-b"></div>
 ```
 
 如果你也想根据条件切换列表中的 class，可以用三元表达式：
 
-```html
+```
 <div v-bind:class="[classA, isB ? classB : '']">
 ```
 
@@ -74,7 +74,7 @@ data: {
 
 不过，当有多个条件 class 时这样写有些繁琐。在 1.0.19+ 中，可以在数组语法中使用对象语法：
 
-```html
+```
 <div v-bind:class="[classA, { classB: isB, classC: isC }]">
 ```
 
@@ -85,10 +85,10 @@ data: {
 
 `v-bind:style` 的对象语法十分直观——看着非常像 CSS，其实它是一个 JavaScript 对象。CSS 属性名可以用驼峰式（camelCase）或短横分隔命名（kebab-case）：
 
-```html
+```
 <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
 ```
-```js
+```
 data: {
   activeColor: 'red',
   fontSize: 30
@@ -97,10 +97,10 @@ data: {
 
 直接绑定到一个样式对象通常更好，让模板更清晰：
 
-```html
+```
 <div v-bind:style="styleObject"></div>
 ```
-```js
+```
 data: {
   styleObject: {
     color: 'red',
@@ -115,7 +115,7 @@ data: {
 
 `v-bind:style` 的数组语法可以将多个样式对象应用到一个元素上：
 
-```html
+```
 <div v-bind:style="[styleObjectA, styleObjectB]">
 ```
 
