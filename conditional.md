@@ -1,8 +1,4 @@
----
-title: 条件渲染
-type: guide
-order: 7
----
+# 条件渲染
 
 ## v-if
 

@@ -1,8 +1,4 @@
----
-title: 列表渲染
-type: guide
-order: 8
----
+# 列表渲染
 
 ## v-for
 

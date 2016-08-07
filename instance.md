@@ -1,8 +1,4 @@
----
-title: Vue 实例
-type: guide
-order: 3
----
+# Vue 实例
 
 ## 构造器
 

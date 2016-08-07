@@ -1,8 +1,4 @@
----
-title: 组件
-type: guide
-order: 12
----
+# 组件
 
 ## 什么是组件？
 

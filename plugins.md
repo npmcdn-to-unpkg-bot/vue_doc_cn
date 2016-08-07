@@ -1,8 +1,4 @@
----
-title: 插件
-type: guide
-order: 17
----
+# 插件
 
 ## 开发插件
 

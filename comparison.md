@@ -1,8 +1,4 @@
----
-title: 对比其它框架
-type: guide
-order: 19
----
+# 对比其它框架
 
 ## Angular
 

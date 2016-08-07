@@ -1,8 +1,4 @@
----
-title: 混合
-type: guide
-order: 16
----
+# 混合
 
 ## 基础
 

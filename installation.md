@@ -1,12 +1,4 @@
----
-title: 安装
-type: guide
-order: 0
-vue_version: 1.0.26
-dev_size: "266.44"
-min_size: "75.01"
-gz_size: "26.03"
----
+# 安装
 
 ### 兼容性
 

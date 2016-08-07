@@ -1,8 +1,4 @@
----
-title: 构建大型应用
-type: guide
-order: 18
----
+# 构建大型应用
 
 > **新：** 使用脚手架工具 [vue-cli](https://github.com/vuejs/vue-cli) 可以快速地构建项目：单文件 Vue 组件，热加载，保存时检查代码，单元测试等。
 

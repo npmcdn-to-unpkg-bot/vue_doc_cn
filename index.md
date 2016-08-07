@@ -1,8 +1,4 @@
----
-title: 起步
-type: guide
-order: 1
----
+# 起步
 
 我们以 Vue 数据绑定的快速导览开始。如果你对高级概述更感兴趣，可查看这篇[博文](http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/)。
 
