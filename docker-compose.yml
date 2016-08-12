@@ -1,9 +1,15 @@
-vue-doc-cn:
-  container_name: vue-doc-cn
-  image: fellah/gitbook:latest
-  ports:
-    - "4000:4000"
-  volumes:
-    - ./:/srv/gitbook
-    - ./:/srv/html
-  command: gitbook init & gitbook build & gitbook serve
+version: '2'
+
+services:
+  vue-doc-cn:
+    container_name: vue-doc-cn
+    image: fellah/gitbook:latest
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./:/srv/gitbook
+      - ./:/srv/html
+    entrypoint: ["/bin/bash", "-c"]
+    command: /bin/bash
+    stdin_open: true
+    tty: true
