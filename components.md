@@ -56,7 +56,7 @@ new Vue({
 </div>
 ```
 
-{% raw %}
+```
 <div id="example" class="demo">
   <my-component></my-component>
 </div>
@@ -66,7 +66,7 @@ Vue.component('my-component', {
 })
 new Vue({ el: '#example' })
 </script>
-{% endraw %}
+```
 
 注意组件的模板**替换**了自定义元素，自定义元素的作用只是作为一个**挂载点**。可以用实例选项 `replace` 决定是否替换。
 
@@ -191,7 +191,7 @@ Vue.component('child', {
 
 **结果：**
 
-{% raw %}
+```
 <div id="prop-example-1" class="demo">
   <child msg="hello!"></child>
 </div>
@@ -206,7 +206,7 @@ new Vue({
   }
 })
 </script>
-{% endraw %}
+```
 
 ### camelCase vs. kebab-case
 
@@ -245,7 +245,7 @@ Vue.component('child', {
 
 **结果：**
 
-{% raw %}
+```
 <div id="demo-2" class="demo">
   <input v-model="parentMsg">
   <br>
@@ -265,7 +265,7 @@ new Vue({
   }
 })
 </script>
-{% endraw %}
+```
 
 ### 字面量语法 vs. 动态语法
 
@@ -451,7 +451,7 @@ var parent = new Vue({
 })
 ```
 
-{% raw %}
+```
 <script type="x/template" id="child-template">
   <input v-model="msg">
   <button v-on:click="notify">Dispatch Event</button>
@@ -489,7 +489,7 @@ var parent = new Vue({
   }
 })
 </script>
-{% endraw %}
+```
 
 ### 使用 v-on 绑定自定义事件
 
@@ -732,7 +732,7 @@ Vue.component('activate-example', {
 }
 ```
 
-{% raw %}
+```
 <div id="transition-mode-demo" class="demo">
   <input v-model="view" type="radio" value="v-a" id="a" name="view"><label for="a">A</label>
   <input v-model="view" type="radio" value="v-b" id="b" name="view"><label for="b">B</label>
@@ -766,7 +766,7 @@ new Vue({
   }
 })
 </script>
-{% endraw %}
+```
 
 ## 杂项
 
