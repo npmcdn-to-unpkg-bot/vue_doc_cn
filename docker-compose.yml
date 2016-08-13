@@ -8,6 +8,7 @@ services:
       - "4000:4000"
     volumes:
       - ./:/gitbook
+      - /usr/share/fonts:/usr/share/fonts
     entrypoint: ["/bin/bash", "-c"]
     command: /bin/bash
     stdin_open: true
