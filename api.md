@@ -1821,9 +1821,9 @@
 
 - **示例：**
 
-  ```
+{% raw %}
   <span v-pre>{{ this will not be compiled }}</span>
-  ```
+{% endraw %}
 
 ### v-cloak
 
