@@ -3,12 +3,11 @@ version: '2'
 services:
   vue-doc-cn:
     container_name: vue-doc-cn
-    image: fellah/gitbook:latest
+    image: billryan/gitbook:latest
     ports:
       - "4000:4000"
     volumes:
-      - ./:/srv/gitbook
-      - ./:/srv/html
+      - ./:/gitbook
     entrypoint: ["/bin/bash", "-c"]
     command: /bin/bash
     stdin_open: true

@@ -1517,11 +1517,11 @@
 
 - **示例：**
 
-  ```
+{% raw %}
   <div v-html="html"></div>
   <!-- 相同 -->
   <div>{{{html}}}</div>
-  ```
+{% endraw %}
 
 ### v-if
 
