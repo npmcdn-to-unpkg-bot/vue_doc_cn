@@ -12,9 +12,9 @@
 
 - **用法：**
 
-  ```
+  {% raw %}
   Vue.config.debug = true
-  ```
+  {% endraw %}
 
   在调试模式中，Vue 会：
 
@@ -33,10 +33,10 @@
 
 - **用法：**
 
-  ```
+  {% raw %}
   // ES6 模板字符串
   Vue.config.delimiters = ['${', '}']
-  ```
+  {% endraw %}
 
   修改文本插值的定界符。
 
@@ -48,10 +48,10 @@
 
 - **用法：**
 
-  ```
+  {% raw %}
   // make it look more dangerous
   Vue.config.unsafeDelimiters = ['{!!', '!!}']
-  ```
+  {% endraw %}
 
   修改原生 HTML 插值的定界符。
 
@@ -63,9 +63,9 @@
 
 - **用法：**
 
-  ```
+  {% raw %}
   Vue.config.silent = true
-  ```
+  {% endraw %}
 
   取消 Vue.js 所有的日志与警告。
 
@@ -77,9 +77,9 @@
 
 - **用法：**
 
-  ```
+  {% raw %}
   Vue.config.async = false
-  ```
+  {% endraw %}
 
   如果关闭了异步模式，Vue 在检测到数据变化时同步更新 DOM。在有些情况下这有助于调试，但是也可能导致性能下降，并且影响 watcher 回调的调用顺序。**`async: false`不推荐用在生产环境中。**
 
@@ -91,10 +91,10 @@
 
 - **用法：**
 
-  ```
+  {% raw %}
   // 在加载 Vue 之后立即同步的设置
   Vue.config.devtools = true
-  ```
+  {% endraw %}
 
   配置是否允许 [vue-devtools](https://github.com/vuejs/vue-devtools) 检查代码。开发版默认为 `true`， 生产版默认为 `false`。 生产版设为 `true` 可以启用检查。
 
@@ -111,11 +111,11 @@
 
   这里要注意的特例是 `el` 和 `data` 选项—— 在 `Vue.extend()` 中它们必须是函数。
 
-  ```
+  {% raw %}
   <div id="mount-point"></div>
-  ```
+  {% endraw %}
 
-  ```
+  {% raw %}
   // 创建可复用的构造器
   var Profile = Vue.extend({
     template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>'
@@ -130,13 +130,13 @@
   })
   // 挂载到元素上
   profile.$mount('#mount-point')
-  ```
+  {% endraw %}
 
   结果：
 
-  ```
+  {% raw %}
   <p>Walter White aka Heisenberg</p>
-  ```
+  {% endraw %}
 
 - **另见：** [组件](/guide/components.html)
 
@@ -149,14 +149,14 @@
 
   延迟回调在下次 DOM 更新循环之后执行。在修改数据之后立即使用这个方法，等待 DOM 更新。
 
-  ```
+  {% raw %}
   // 修改数据
   vm.msg = 'Hello'
   // DOM 没有更新
   Vue.nextTick(function () {
     // DOM 更新了
   })
-  ```
+  {% endraw %}
 
 - **另见：** [异步更新队列](/guide/reactivity.html#异步更新队列)
 
@@ -197,7 +197,7 @@
 
   注册或获取全局指令。
 
-  ```
+  {% raw %}
   // 注册
   Vue.directive('my-directive', {
     bind: function () {},
@@ -212,7 +212,7 @@
 
   // getter，返回已注册的指令
   var myDirective = Vue.directive('my-directive')
-  ```
+  {% endraw %}
 
 - **另见：** [自定义指令](/guide/custom-directive.html)
 
@@ -226,7 +226,7 @@
 
   注册或获取全局的元素指令。
 
-  ```
+  {% raw %}
   // 注册
   Vue.elementDirective('my-element', {
     bind: function () {},
@@ -236,7 +236,7 @@
 
   // getter，返回已注册的元素指令
   var myDirective = Vue.elementDirective('my-element')
-  ```
+  {% endraw %}
 
 - **另见：** [元素指令](/guide/custom-directive.html#元素指令)
 
@@ -250,7 +250,7 @@
 
   注册或获取全局过滤器。
 
-  ```
+  {% raw %}
   // 注册
   Vue.filter('my-filter', function (value) {
     // 返回处理后的值
@@ -264,7 +264,7 @@
 
   // getter，返回已注册的指令
   var myFilter = Vue.filter('my-filter')
-  ```
+  {% endraw %}
 
 - **另见：** [自定义过滤器](/guide/custom-filter.html)
 
@@ -278,7 +278,7 @@
 
   注册或获取全局组件。
 
-  ```
+  {% raw %}
   // 注册组件，传入一个扩展的构造器
   Vue.component('my-component', Vue.extend({ /* ... */}))
 
@@ -287,7 +287,7 @@
 
   // 获取注册的组件（始终返回构造器）
   var MyComponent = Vue.component('my-component')
-  ```
+  {% endraw %}
 
 - **另见：** [组件](/guide/components.html)
 
@@ -301,7 +301,7 @@
 
   注册或获取全局的过渡钩子对象。
 
-  ```
+  {% raw %}
   // 注册
   Vue.transition('fade', {
     enter: function () {},
@@ -310,7 +310,7 @@
 
   // 获取注册的钩子
   var fadeTransition = Vue.transition('fade')
-  ```
+  {% endraw %}
 
 - **另见：** [过渡](/guide/transitions.html)
 
@@ -324,13 +324,13 @@
 
   注册或获取全局的 partial。
 
-  ```
+  {% raw %}
   // 注册
   Vue.partial('my-partial', '<div>Hi</div>')
 
   // 获取注册的 partial
   var myPartial = Vue.partial('my-partial')
-  ```
+  {% endraw %}
 
 - **另见：** [特殊元素 - &lt;partial&gt;](#partial)
 
@@ -380,7 +380,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   var data = { a: 1 }
 
   // 直接创建一个实例
@@ -396,7 +396,7 @@
       return { a: 1 }
     }
   })
-  ```
+  {% endraw %}
 
 - **另见：** [深入响应式原理](/guide/reactivity.html)
 
@@ -410,7 +410,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   // 简单语法
   Vue.component('props-demo-simple', {
     props: ['size', 'myMessage']
@@ -430,7 +430,7 @@
       }
     }
   })
-  ```
+  {% endraw %}
 
 - **另见：** [Props](/guide/components.html#Props)
 
@@ -448,7 +448,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   var Comp = Vue.extend({
     props: ['msg'],
     template: '<div>{{ msg }}</div>'
@@ -459,7 +459,7 @@
       msg: 'hello'
     }
   })
-  ```
+  {% endraw %}
 
 ### computed
 
@@ -471,7 +471,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   var vm = new Vue({
     data: { a: 1 },
     computed: {
@@ -494,7 +494,7 @@
   vm.aPlus = 3
   vm.a       // -> 2
   vm.aDouble // -> 4
-  ```
+  {% endraw %}
 
 - **另见：**
   - [计算属性](/guide/computed.html)
@@ -510,7 +510,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   var vm = new Vue({
     data: { a: 1 },
     methods: {
@@ -521,7 +521,7 @@
   })
   vm.plus()
   vm.a // 2
-  ```
+  {% endraw %}
 
 - **另见：** [方法与事件处理器](/guide/events.html)
 
@@ -535,7 +535,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   var vm = new Vue({
     data: {
       a: 1
@@ -554,7 +554,7 @@
     }
   })
   vm.a = 2 // -> new: 2, old: 1
-  ```
+  {% endraw %}
 
 - **另见：** [实例方法 - vm.$watch](#vm-watch)
 
@@ -607,44 +607,44 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   <div id="replace" class="foo"></div>
-  ```
+  {% endraw %}
 
-  ```
+  {% raw %}
   new Vue({
     el: '#replace',
     template: '<p class="bar">replaced</p>'
   })
-  ```
+  {% endraw %}
 
   结果：
 
-  ```
+  {% raw %}
   <p class="foo bar" id="replace">replaced</p>
-  ```
+  {% endraw %}
 
   `replace` 设为 `false`：
 
-  ```
+  {% raw %}
   <div id="insert" class="foo"></div>
-  ```
+  {% endraw %}
 
-  ```
+  {% raw %}
   new Vue({
     el: '#insert',
     replace: false,
     template: '<p class="bar">inserted</p>'
   })
-  ```
+  {% endraw %}
 
   结果：
 
-  ```
+  {% raw %}
   <div id="insert" class="foo">
     <p class="bar">inserted</p>
   </div>
-  ```
+  {% endraw %}
 
 ## 选项 / 生命周期钩子
 
@@ -829,7 +829,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   var vm = new Vue({
     events: {
       'hook:created': function () {
@@ -849,7 +849,7 @@
   }) // -> created!
   vm.$emit('greeting', 'hi!') // -> hi!
   vm.$emit('bye')             // -> goodbye!
-  ```
+  {% endraw %}
 
 - **另见：**
   - [实例方法 - 事件](#实例方法-事件)
@@ -867,7 +867,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   var mixin = {
     created: function () { console.log(1) }
   }
@@ -877,7 +877,7 @@
   })
   // -> 1
   // -> 2
-  ```
+  {% endraw %}
 
 - **另见：** [混合](/guide/mixins.html)
 
@@ -895,7 +895,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   var Ctor = Vue.extend({
     name: 'stack-overflow',
     template:
@@ -910,7 +910,7 @@
   var vm = new Ctor()
 
   console.log(vm) // -> StackOverflow {$el: null, ...}
-  ```
+  {% endraw %}
 
 ### extends
 
@@ -926,7 +926,7 @@
 
 - *示例：**
 
-  ```
+  {% raw %}
   var CompA = { ... }
 
   // 扩展 CompA，不用调用 Vue.extend
@@ -934,7 +934,7 @@
     extends: CompA,
     ...
   }
-  ```
+  {% endraw %}
 
 ## 实例属性
 
@@ -966,14 +966,14 @@
 
   当前实例的初始化选项。在选项中包含自定义属性时有用处：
 
-  ```
+  {% raw %}
   new Vue({
     customOption: 'foo',
     created: function () {
       console.log(this.$options.customOption) // -> 'foo'
     }
   })
-  ```
+  {% endraw %}
 
 ### vm.$parent
 
@@ -1053,7 +1053,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   // 键路径
   vm.$watch('a.b.c', function (newVal, oldVal) {
     // 做点什么
@@ -1073,38 +1073,38 @@
       // 做点什么
     }
   )
-  ```
+  {% endraw %}
 
   `vm.$watch` 返回一个取消观察函数，用来停止触发回调：
 
-  ```
+  {% raw %}
   var unwatch = vm.$watch('a', cb)
   // 之后取消观察
   unwatch()
-  ```
+  {% endraw %}
 
 - **Option: deep**
 
   为了发现对象内部值的变化，可以在选项参数中指定 `deep: true`。注意监听数组的变动不需要这么做。
 
-  ```
+  {% raw %}
   vm.$watch('someObject', callback, {
     deep: true
   })
   vm.someObject.nestedValue = 123
   // 触发回调
-  ```
+  {% endraw %}
 
 - **Option: immediate**
 
   在选项参数中指定 `immediate: true` 将立即以表达式的当前值触发回调：
 
-  ```
+  {% raw %}
   vm.$watch('a', callback, {
     immediate: true
   })
   // 立即以 `a` 的当前值触发回调
-  ```
+  {% endraw %}
 
 <h3 id="vm-get">vm.$get( expression )</h3>
 
@@ -1117,7 +1117,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   var vm = new Vue({
     data: {
       a: {
@@ -1127,7 +1127,7 @@
   })
   vm.$get('a.b') // -> 1
   vm.$get('a.b + 1') // -> 2
-  ```
+  {% endraw %}
 
 <h3 id="vm-set">vm.$set( keypath, value )</h3>
 
@@ -1147,7 +1147,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   var vm = new Vue({
     data: {
       a: {
@@ -1163,7 +1163,7 @@
   // keypath 不存在
   vm.$set('c', 3)
   vm.c // -> 3
-  ```
+  {% endraw %}
 
 - **另见：** [深入响应式原理](/guide/reactivity.html)
 
@@ -1187,10 +1187,10 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   // 假定 vm.msg = 'hello'
   vm.$eval('msg | uppercase') // -> 'HELLO'
-  ```
+  {% endraw %}
 
 <h3 id="vm-interpolate">vm.$interpolate( templateString )</h3>
 
@@ -1203,10 +1203,10 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   // 假定 vm.msg = 'hello'
   vm.$interpolate('{{msg}} world!') // -> 'hello world!'
-  ```
+  {% endraw %}
 
 <h3 id="vm-log">vm.$log( [keypath] )</h3>
 
@@ -1217,10 +1217,10 @@
 
   打印当前实例的数据，比起一堆 getter/setter 要友好。keypath 可选。
 
-  ```
+  {% raw %}
   vm.$log() // 打印整个 ViewModel 的数据
   vm.$log('item') // 打印 vm.item
-  ```
+  {% endraw %}
 
 ## 实例方法 / 事件
 
@@ -1236,13 +1236,13 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   vm.$on('test', function (msg) {
     console.log(msg)
   })
   vm.$emit('test', 'hi')
   // -> "hi"
-  ```
+  {% endraw %}
 
 <h3 id="vm-once">vm.$once( event, callback )</h3>
 
@@ -1290,7 +1290,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   // 创建父链
   var parent = new Vue()
   var child1 = new Vue({ parent: parent })
@@ -1310,7 +1310,7 @@
   // -> "child2 notified"
   // -> "child1 notified"
   // 没有通知 parent，因为 child1 的回调没有返回 true
-  ```
+  {% endraw %}
 
 - **另见：** [父子组件通信](/guide/components.html#父子组件通信)
 
@@ -1326,7 +1326,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   var parent = new Vue()
   // child1 和 child2 是兄弟
   var child1 = new Vue({ parent: parent })
@@ -1348,7 +1348,7 @@
   // -> "child1 notified"
   // -> "child2 notified"
   // 没有通知 child3，因为 child2 的回调没有返回 true
-  ```
+  {% endraw %}
 
 ## 实例方法 / DOM
 
@@ -1410,7 +1410,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   new Vue({
     // ...
     methods: {
@@ -1427,7 +1427,7 @@
       }
     }
   })
-  ```
+  {% endraw %}
 
 - **另见：**
   - [Vue.nextTick](#Vue-nextTick)
@@ -1453,7 +1453,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   var MyComponent = Vue.extend({
     template: '<div>Hello!</div>'
   })
@@ -1466,7 +1466,7 @@
 
   // 手动挂载
   new MyComponent().$mount().$appendTo('#container')
-  ```
+  {% endraw %}
 
 - **另见：** [生命周期图示](/guide/instance.html#生命周期图示)
 
@@ -1497,11 +1497,11 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   <span v-text="msg"></span>
   <!-- same as -->
   <span>{{msg}}</span>
-  ```
+  {% endraw %}
 
 ### v-html
 
@@ -1553,14 +1553,14 @@
 
   为 `v-if` 和 `v-show` 添加 “else 块”。
 
-  ```
+  {% raw %}
   <div v-if="Math.random() > 0.5">
     Sorry
   </div>
   <div v-else>
     Not sorry
   </div>
-  ```
+  {% endraw %}
 
 - **另见：** [条件渲染 - v-else](/guide/conditional.html#v-else)
 - **另见：** [条件渲染 - 组件警告](/guide/conditional.html#组件警告)
@@ -1579,20 +1579,20 @@
 
   基于源数据将元素或模板块重复数次。指令的值必须使用特定语法 `alias (in|of) expression`，为当前遍历的元素提供别名：
 
-  ```
+  {% raw %}
   <div v-for="item in items">
     {{ item.text }}
   </div>
-  ```
+  {% endraw %}
 
   1.0.17+ 支持 `of` 分隔符。
 
   另外也可以为数组索引指定别名（如果值是对象可以为键指定别名）：
 
-  ```
+  {% raw %}
   <div v-for="(index, item) in items"></div>
   <div v-for="(key, val) in object"></div>
-  ```
+  {% endraw %}
 
 - **另见：** [列表渲染](/guide/list.html)
 
@@ -1624,7 +1624,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   <!-- 方法处理器 -->
   <button v-on:click="doThis"></button>
 
@@ -1651,16 +1651,16 @@
 
   <!-- 键修饰符，键代码 -->
   <input @keyup.13="onEnter">
-  ```
+  {% endraw %}
 
   在子组件上监听自定义事件（当子组件触发 "my-event" 时将调用事件处理器）：
 
-  ```
+  {% raw %}
   <my-component @my-event="handleThis"></my-component>
 
   <!-- 内联语句 -->
   <my-component @my-event="handleThis(123, $arguments)"></my-component>
-  ```
+  {% endraw %}
 
 - **另见：** [方法与事件处理器](/guide/events.html)
 
@@ -1689,7 +1689,7 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   <!-- 绑定 attribute -->
   <img v-bind:src="imageSrc">
 
@@ -1716,7 +1716,7 @@
 
   <!-- 单次 prop 绑定 -->
   <my-component :prop.once="someThing"></my-component>
-  ```
+  {% endraw %}
 
 - **另见：**
   - [Class 和 Style 绑定](/guide/class-and-style.html)
@@ -1762,27 +1762,27 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   <comp v-ref:child></comp>
   <comp v-ref:some-child></comp>
-  ```
+  {% endraw %}
 
-  ```
+  {% raw %}
   // 从父组件访问
   this.$refs.child
   this.$refs.someChild
-  ```
+  {% endraw %}
 
   使用 `v-for`：
 
-  ```
+  {% raw %}
   <comp v-ref:list v-for="item in list"></comp>
-  ```
+  {% endraw %}
 
-  ```
+  {% raw %}
   // 值是一个数组
   this.$refs.list
-  ```
+  {% endraw %}
 
 - **另见：** [子组件索引](/guide/components.html#子组件索引)
 
@@ -1802,14 +1802,14 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   <span v-el:msg>hello</span>
   <span v-el:other-msg>world</span>
-  ```
-  ```
+  {% endraw %}
+  {% raw %}
   this.$els.msg.textContent // -> "hello"
   this.$els.otherMsg.textContent // -> "world"
-  ```
+  {% endraw %}
 
 ### v-pre
 
@@ -1835,17 +1835,17 @@
 
 - **示例：**
 
-  ```css
+  {% raw %}
   [v-cloak] {
     display: none;
   }
-  ```
+  {% endraw %}
 
-  ```
+  {% raw %}
   <div v-cloak>
     {{ message }}
   </div>
-  ```
+  {% endraw %}
 
   `<div>` 不会显示，直到编译结束。
 
@@ -1862,11 +1862,11 @@
 
   另一种调用组件的语法。主要是和 `is` 特性一起用于动态组件。
 
-  ```
+  {% raw %}
   <!-- 动态组件 -->
   <!-- 由实例的 `componentId` 属性控制 -->
   <component :is="componentId"></component>
-  ```
+  {% endraw %}
 
 - **另见：** [动态组件](/guide/components.html#动态组件)
 
@@ -1894,12 +1894,12 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   // 注册 partial
   Vue.partial('my-partial', '<p>This is a partial! {{msg}}</p>')
-  ```
+  {% endraw %}
 
-  ```
+  {% raw %}
   <!-- 静态 partial -->
   <partial name="my-partial"></partial>
 
@@ -1909,7 +1909,7 @@
 
   <!-- 动态 partial，使用 v-bind 缩写语法 -->
   <partial :name="partialId"></partial>
-  ```
+  {% endraw %}
 
 ## 过滤器
 
@@ -1917,9 +1917,9 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   {{ msg | capitalize }}
-  ```
+  {% endraw %}
 
   *'abc' => 'Abc'*
 
@@ -1927,9 +1927,9 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   {{ msg | uppercase }}
-  ```
+  {% endraw %}
 
   *'abc' => 'ABC'*
 
@@ -1937,9 +1937,9 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   {{ msg | lowercase }}
-  ```
+  {% endraw %}
 
   *'ABC' => 'abc'*
 
@@ -1951,25 +1951,25 @@
 
 - **示例：**
 
-  ```
+  {% raw %}
   {{ amount | currency }}
-  ```
+  {% endraw %}
 
   *12345 => $12,345.00*
 
   使用其它符号：
 
-  ```
+{% raw %}
   {{ amount | currency '£' }}
-  ```
+{% endraw %}
 
   *12345 => £12,345.00*
 
   一些货币使用 3 或 4 个小数位，而一些货币不会，例如日元（¥）、越南盾（₫）：
 
-  ```
+{% raw %}
   {{ amount | currency '₫' 0 }}
-  ```
+{% endraw %}
 
   *12345 => ₫12,345*
 
@@ -1984,16 +1984,16 @@
 
 - **示例：**
 
-  ```
+{% raw %}
   {{count}} {{count | pluralize 'item'}}
-  ```
+{% endraw %}
 
   *1 => '1 item'*
   *2 => '2 items'*
 
-  ```
+{% raw %}
   {{date}}{{date | pluralize 'st' 'nd' 'rd' 'th'}}
-  ```
+{% endraw %}
 
   结果：
 
@@ -2016,9 +2016,9 @@
 
   以四个空格的缩进打印一个对象：
 
-  ```
+{% raw %}
   <pre>{{ nestedObject | json 4 }}</pre>
-  ```
+{% endraw %}
 
 ### debounce
 
@@ -2033,9 +2033,9 @@
 
 - **示例：**
 
-  ```
+{% raw %}
   <input @keyup="onKeyup | debounce 500">
-  ```
+{% endraw %}
 
 ### limitBy
 
@@ -2049,13 +2049,13 @@
 
  限制数组为开始 N 个元素，N 由第一个参数指定。第二个参数是可选的，指定开始的偏移量。
 
-  ```
+{% raw %}
   <!-- 只显示开始 10 个元素 -->
   <div v-for="item in items | limitBy 10"></div>
 
   <!-- 显示第 5 到 15 元素-->
   <div v-for="item in items | limitBy 10 5"></div>
-  ```
+{% endraw %}
 
 ### filterBy
 
@@ -2072,23 +2072,23 @@
 
   如果第一个参数是字符串，则在每个数组元素中搜索它：
 
-  ```
+{% raw %}
   <div v-for="item in items | filterBy 'hello'">
-  ```
+{% endraw %}
 
   在上例中，只显示包含字符串 `"hello"` 的元素。
 
   如果 item 是一个对象，过滤器将递归地在它所有属性中搜索。为了缩小搜索范围，可以指定一个搜索字段：
 
-  ```
+{% raw %}
   <div v-for="user in users | filterBy 'Jack' in 'name'">
-  ```
+{% endraw %}
 
   在上例中，过滤器只在用户对象的 `name` 属性中搜索 `"Jack"`。**为了更好的性能，最好始终限制搜索范围。**
 
   上例使用静态参数，当然可以使用动态参数作为搜索目标或搜索字段。配合 `v-model` 我们可以轻松实现输入提示效果：
 
-  ```
+{% raw %}
   <div id="filter-by-example">
     <input v-model="name">
     <ul>
@@ -2097,9 +2097,9 @@
       </li>
     </ul>
   </div>
-  ```
+{% endraw %}
 
-  ```
+{% raw %}
   new Vue({
     el: '#filter-by-example',
     data: {
@@ -2111,9 +2111,9 @@
       ]
     }
   })
-  ```
+{% endraw %}
 
-  {% raw %}
+{% raw %}
   <div id="filter-by-example" class="demo">
     <input v-model="name">
     <ul>
@@ -2131,28 +2131,28 @@
     }
   })
   </script>
-  {% endraw %}
+{% endraw %}
 
 - **另一个示例：**
 
   多搜索字段：
 
-  ```
+{% raw %}
   <li v-for="user in users | filterBy searchText in 'name' 'phone'"></li>
-  ```
+{% endraw %}
 
   多搜索字段为一个动态数组：
 
-  ```
+{% raw %}
   <!-- fields = ['fieldA', 'fieldB'] -->
   <div v-for="user in users | filterBy searchText in fields">
-  ```
+{% endraw %}
 
   使用自定义过滤函数：
 
-  ```
+{% raw %}
   <div v-for="user in users | filterBy myCustomFilterFunction">
-  ```
+{% endraw %}
 
 ### orderBy
 
@@ -2172,37 +2172,37 @@
 
   按名字排序用户：
 
-  ```
+{% raw %}
   <ul>
     <li v-for="user in users | orderBy 'name'">
       {{ user.name }}
     </li>
   </ul>
-  ```
+{% endraw %}
 
   降序：
 
-  ```
+{% raw %}
   <ul>
     <li v-for="user in users | orderBy 'name' -1">
       {{ user.name }}
     </li>
   </ul>
-  ```
+{% endraw %}
 
   原始类型数组：
 
-  ```
+{% raw %}
   <ul>
     <li v-for="n in numbers | orderBy true">
       {{ n }}
     </li>
   </ul>
-  ```
+{% endraw %}
 
   动态排序：
 
-  ```
+{% raw %}
   <div id="orderby-example">
     <button @click="order = order * -1">Reverse Sort Order</button>
     <ul>
@@ -2211,9 +2211,9 @@
       </li>
     </ul>
   </div>
-  ```
+{% endraw %}
 
-  ```
+{% raw %}
   new Vue({
     el: '#orderby-example',
     data: {
@@ -2221,17 +2221,17 @@
       users: [{ name: 'Bruce' }, { name: 'Chuck' }, { name: 'Jackie' }]
     }
   })
-  ```
+{% endraw %}
 
   使用两个键名排序：
 
-  ```
+{% raw %}
   <ul>
     <li v-for="user in users | orderBy 'lastName' 'firstName'">
       {{ user.lastName }} {{ user.firstName }}
     </li>
   </ul>
-  ```
+{% endraw %}
 
   {% raw %}
   <div id="orderby-example" class="demo">
@@ -2255,7 +2255,7 @@
 
   使用一个函数排序：
 
-  ```
+  {% raw %}
   <div id="orderby-compare-example" class="demo">
     <button @click="order = order * -1">Reverse Sort Order</button>
     <ul>
@@ -2264,9 +2264,9 @@
       </li>
     </ul>
   </div>
-  ```
+  {% endraw %}
 
-  ```
+  {% raw %}
   new Vue({
     el: '#orderby-compare-example',
     data: {
@@ -2292,7 +2292,7 @@
       }
     }
   })
-  ```
+  {% endraw %}
 
   {% raw %}
   <div id="orderby-compare-example" class="demo">
@@ -2346,9 +2346,9 @@ Vue.js 在 `Array.prototype` 上添加了两个方法，以方便常见的数组
 
   通过索引设置数组元素并触发视图更新。
 
-  ```
+  {% raw %}
   vm.animals.$set(0, { name: 'Aardvark' })
-  ```
+  {% endraw %}
 
 - **另见：** [数组检测问题](/guide/list.html#问题)
 
@@ -2361,9 +2361,9 @@ Vue.js 在 `Array.prototype` 上添加了两个方法，以方便常见的数组
 
   通过索引删除数组元素并触发视图更新。这个方法先在数组中搜索这个元素，如果找到了则调用 `array.splice(index, 1)`。
 
-  ```
+  {% raw %}
   var aardvark = vm.animals[0]
   vm.animals.$remove(aardvark)
-  ```
+  {% endraw %}
 
 - **另见：** [变异方法](/guide/list.html#变异方法)
