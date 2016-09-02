@@ -22,7 +22,7 @@ Vue.js 不支持 IE8 及其以下版本，因为 Vue.js 使用了 IE8 不能实�
 
 可以从 [jsdelivr](//cdn.jsdelivr.net/vue/{{vue_version}}/vue.min.js) 或 [cdnjs](//cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.min.js) 获取（版本更新可能略滞后）。
 
-也可以使用 [npmcdn](https://npmcdn.com/vue/dist/vue.min.js)，这个链接指向发布到 npm 上的最新稳定版本。 可以在 [npmcdn.com/vue/](https://npmcdn.com/vue/) 上查看包的源码。
+也可以使用 [unpkg](https://unpkg.com/vue/dist/vue.min.js)，这个链接指向发布到 npm 上的最新稳定版本。 可以在 [unpkg.com/vue/](https://unpkg.com/vue/) 上查看包的源码。
 ### CSP 兼容版本
 
 有些环境，如 Google Chrome Apps，强制应用内容安全策略 (CSP) ，不能使用 `new Function()` 对表达式求值。这时可以用 [CSP 兼容版本](https://github.com/vuejs/vue/tree/csp/dist)。
